@@ -1,0 +1,6 @@
+{
+  "name": "Security Expert Portfolio",
+  "description": "A dark mode, hacker-vibe portfolio website for a security expert.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
