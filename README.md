@@ -27,16 +27,13 @@ It is built as a single-page landing portfolio with strong technical atmosphere,
 - Server-rendered Astro output for better SEO and no-JS readability
 - Open Graph, Twitter, canonical, robots, theme color, and JSON-LD structured data defaults
 - Tailwind CSS 4 styling through the Vite plugin
-- React islands for interactive navigation and motion
+- Native Astro components with local SVG icons and Tailwind styling
 
 ## Tech Stack
 
 - Astro 6
-- React 19
 - TypeScript
 - Tailwind CSS 4
-- Motion
-- Lucide React
 
 ## Getting Started
 
@@ -76,9 +73,9 @@ Before publishing, update the project-specific values:
 
 - `site` in `astro.config.mjs`
 - SEO title, description, canonical behavior, and JSON-LD in `src/pages/index.astro`
-- Brand name, contact email, social links, services, projects, and footer links in `src/App.tsx`
-- Tool inventory content in `src/components/Toolstack.tsx`
-- Methodology steps in `src/components/Methodology.tsx`
+- Brand name, contact email, social links, services, projects, and footer links in `src/App.astro`
+- Tool inventory content in `src/components/Toolstack.astro`
+- Methodology steps in `src/components/Methodology.astro`
 - Contact form handling in the contact section
 - `public/favicon.svg` if you want a custom brand mark
 
@@ -136,16 +133,27 @@ The contact form currently prevents default submission and is intended as a them
 
 ```txt
 src/
-  App.tsx
+  App.astro
   index.css
   pages/
     index.astro
   components/
-    Methodology.tsx
-    Toolstack.tsx
+    Methodology.astro
+    Toolstack.astro
 public/
   favicon.svg
   preview.webp
+  icons/
+    cpu.svg
+    file-code.svg
+    folder.svg
+    lock.svg
+    search.svg
+    shield.svg
+    server.svg
+    target.svg
+    terminal.svg
+    check-circle.svg
 ```
 
 ## Changelog

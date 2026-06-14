@@ -11,8 +11,6 @@
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
     "paths": {
       "@/*": [
         "./*"
