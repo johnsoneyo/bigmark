@@ -154,11 +154,11 @@ const {
           <h2 id="services-title" class="text-3xl text-white font-mono uppercase">{sections.services.heading}</h2>
           <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
         </div>
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="service-grid grid md:grid-cols-2 gap-0">
           {services.map((service, i) => (
-            <article class="p-6 border border-gray-800 bg-[#161B22]/50 hover:bg-[#161B22] hover:border-[#00FF00]/30 transition-all group reveal-lift" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
-              <div class="mb-4 bg-[#0D1117] w-12 h-12 rounded flex items-center justify-center border border-gray-800 group-hover:border-[#00FF00]/50 transition-colors">
-                <MaterialIcon name={service.icon} class="text-2xl text-[#00FF00]" aria-hidden="true" />
+            <article class="service-grid-item p-8 lg:p-10 min-h-[18rem] transition-colors group reveal-lift hover:bg-[#161B22]/35" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+              <div class="mb-8 flex h-12 w-12 items-center justify-start">
+                <MaterialIcon name={service.icon} class="text-4xl text-gray-200 group-hover:text-[#00FF00] transition-colors" aria-hidden="true" />
               </div>
               <h3 class="text-xl text-gray-200 mb-3 font-mono">{service.title}</h3>
               <p class="text-sm text-gray-300 font-sans leading-relaxed">{service.desc}</p>

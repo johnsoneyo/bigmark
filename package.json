@@ -1,7 +1,7 @@
 {
   "name": "security-expert-portfolio",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "NULLTRACE is a dark terminal-inspired Astro theme for security consultants and cybersecurity portfolios.",
   "license": "MIT",
   "type": "module",

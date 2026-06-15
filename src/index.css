@@ -144,6 +144,28 @@ textarea {
   background: #0D1117;
 }
 
+.service-grid-item {
+  border-top: 1px solid rgb(31 41 55 / 0.9);
+}
+
+.service-grid-item:first-child {
+  border-top: 0;
+}
+
+@media (min-width: 768px) {
+  .service-grid-item {
+    border-top: 0;
+  }
+
+  .service-grid-item:nth-child(n + 3) {
+    border-top: 1px solid rgb(31 41 55 / 0.9);
+  }
+
+  .service-grid-item:nth-child(even) {
+    border-left: 1px solid rgb(31 41 55 / 0.9);
+  }
+}
+
 .terminal-scroll::-webkit-scrollbar {
   width: 8px;
 }
