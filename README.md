@@ -27,12 +27,12 @@ It is built as a single-page landing portfolio with strong technical atmosphere,
 - Server-rendered Astro output for better SEO and no-JS readability
 - Open Graph, Twitter, canonical, robots, theme color, and JSON-LD structured data defaults
 - Tailwind CSS 4 styling through the Vite plugin
-- Native Astro components with local SVG icons and Tailwind styling
+- Native Astro components with self-hosted, subset Google Material Symbols icons
 
 ## Tech Stack
 
 - Astro 6
-- TypeScript
+- TypeScript configuration for type-checking
 - Tailwind CSS 4
 
 ## Getting Started
@@ -76,6 +76,7 @@ Before publishing, update the project-specific values:
 - Brand name, contact email, social links, services, projects, and footer links in `src/App.astro`
 - Tool inventory content in `src/components/Toolstack.astro`
 - Methodology steps in `src/components/Methodology.astro`
+- Icon names in `src/App.astro`, `src/components/Methodology.astro`, and `src/components/Toolstack.astro`
 - Contact form handling in the contact section
 - `public/favicon.svg` if you want a custom brand mark
 
@@ -116,7 +117,7 @@ The theme includes:
 - Semantic `header`, `main`, `section`, `article`, `footer`, and labelled navigation
 - Skip link for keyboard users
 - Visible focus rings
-- Mobile menu dialog semantics with `aria-expanded`, `aria-controls`, and Escape-to-close behavior
+- Mobile menu semantics with `aria-expanded`, `aria-controls`, and Escape-to-close behavior
 - Body scroll lock while the mobile menu is open
 - Labelled contact form fields with autocomplete and required states
 - Decorative UI elements marked with `aria-hidden`
@@ -127,7 +128,7 @@ The theme includes:
 
 The included copy is starter/demo content. Replace it with real services, project summaries, tools, contact details, and social profiles before publishing.
 
-The contact form currently prevents default submission and is intended as a theme shell. Connect it to your preferred form provider, server action, or API endpoint.
+The contact form is a theme shell and does not submit anywhere yet. Connect it to your preferred form provider, server action, or API endpoint.
 
 ## Project Structure
 
@@ -138,22 +139,14 @@ src/
   pages/
     index.astro
   components/
+    MaterialIcon.astro
     Methodology.astro
     Toolstack.astro
 public/
   favicon.svg
   preview.webp
-  icons/
-    cpu.svg
-    file-code.svg
-    folder.svg
-    lock.svg
-    search.svg
-    shield.svg
-    server.svg
-    target.svg
-    terminal.svg
-    check-circle.svg
+  fonts/
+    material-symbols-outlined-200.ttf
 ```
 
 ## Changelog

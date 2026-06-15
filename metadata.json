@@ -1,6 +1,6 @@
 {
-  "name": "Security Expert Portfolio",
-  "description": "A dark mode, hacker-vibe portfolio website for a security expert.",
+  "name": "NULLTRACE Astro Security Consultant Theme",
+  "description": "A dark terminal-inspired Astro theme for security consultants and cybersecurity portfolios.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
