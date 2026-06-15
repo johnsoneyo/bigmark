@@ -29,12 +29,12 @@ const categories = [
 ---
 
 <section id="toolstack" aria-labelledby="toolstack-title" class="scroll-mt-32">
-  <div class="flex items-center gap-4 mb-12">
+  <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
     <h2 id="toolstack-title" class="text-3xl text-white font-mono uppercase">ls -la /opt/tools</h2>
     <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
   </div>
 
-  <div class="border border-gray-800 bg-[#05080D]/80 shadow-[0_0_0_1px_rgba(0,255,0,0.03)]">
+  <div class="border border-gray-800 bg-[#05080D]/80 shadow-[0_0_0_1px_rgba(0,255,0,0.03)] reveal-static" data-reveal>
     <div class="flex items-center justify-between gap-4 border-b border-gray-800 bg-[#161B22]/60 px-4 py-3 font-mono text-xs text-gray-300">
       <div aria-hidden="true" class="flex items-center gap-2">
         <span class="h-2.5 w-2.5 rounded-full bg-[#00FF00]/70"></span>
@@ -62,7 +62,7 @@ const categories = [
 
       <div class="divide-y divide-gray-900">
         {categories.map((cat, i) => (
-          <article class="grid gap-3 py-5 md:grid-cols-[120px_92px_92px_1fr] md:gap-4">
+          <article class="grid gap-3 py-5 md:grid-cols-[120px_92px_92px_1fr] md:gap-4" data-reveal="left" style={`--reveal-delay: ${i * 90}ms`}>
             <div class="flex items-center gap-2 text-xs text-[#00FF00]">
               <MaterialIcon name="folder" class="text-base" aria-hidden="true" />
               <span>drwxr-x---</span>

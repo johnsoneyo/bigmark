@@ -55,6 +55,9 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <noscript>
       <style>

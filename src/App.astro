@@ -49,7 +49,7 @@ const projects = [
 <div class="min-h-screen terminal-scroll overflow-x-hidden relative bg-[#0D1117]">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0D1117] border-b border-gray-800">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0D1117] border-b border-gray-800 reveal-static" data-reveal style="--reveal-delay: 40ms">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="/" class="site-logo flex items-center gap-2 text-[#00FF00] font-mono" aria-label="NULLTRACE home">
         <span class="font-bold tracking-tight">./NULLTRACE</span>
@@ -119,20 +119,37 @@ const projects = [
         setMenuOpen(false);
       }
     });
+
+    const revealElements = Array.from(document.querySelectorAll('[data-reveal]'));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+      revealElements.forEach((element) => revealObserver.observe(element));
+    }
   </script>
 
   <main id="main-content" class="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-0 space-y-32">
     <section aria-labelledby="hero-title" class="relative pt-20 lg:pt-32 flex flex-col items-start min-h-[60vh] justify-center overflow-hidden">
       <div class="relative z-10">
-        <p class="font-mono text-[#00FF00] mb-4">&gt;&nbsp;whoami<span aria-hidden="true" class="inline-block w-2 h-5 ml-2 align-[-3px] bg-[#00FF00] animate-cursor-blink"></span></p>
-        <h1 id="hero-title" class="max-w-full text-4xl sm:text-5xl md:text-7xl font-mono text-white mb-6 uppercase tracking-normal leading-[0.95]">
+        <p class="font-mono text-[#00FF00] mb-4 reveal-static" data-reveal style="--reveal-delay: 120ms">&gt;&nbsp;whoami<span aria-hidden="true" class="inline-block w-2 h-5 ml-2 align-[-3px] bg-[#00FF00] animate-cursor-blink"></span></p>
+        <h1 id="hero-title" class="max-w-full text-4xl sm:text-5xl md:text-7xl font-mono text-white mb-6 uppercase tracking-normal leading-[0.95] reveal-static" data-reveal style="--reveal-delay: 220ms">
           Find The Breach <br />
           <span class="text-[#00FF00] drop-shadow-[0_0_10px_rgba(0,255,0,0.4)]">Before It Finds You</span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-2xl font-sans mb-10 leading-relaxed">
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl font-sans mb-10 leading-relaxed reveal-static" data-reveal style="--reveal-delay: 340ms">
           I identify vulnerabilities before adversaries do. Specializing in penetration testing, incident response, and securing mission-critical infrastructure.
         </p>
-        <div class="flex flex-wrap gap-4 font-mono group">
+        <div class="flex flex-wrap gap-4 font-mono group reveal-static" data-reveal style="--reveal-delay: 460ms">
           <a href="#contact" class="relative px-6 py-3 bg-[#00FF00]/10 text-[#00FF00] border border-[#00FF00]/50 hover:bg-[#00FF00]/20 transition-all flex items-center gap-2">
             Initiate Contact
             <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-px bg-[#00FF00] origin-left scale-x-0 group-hover:scale-x-100 transition-transform"></span>
@@ -146,13 +163,13 @@ const projects = [
 
     <section id="services" aria-labelledby="services-title" class="scroll-mt-32">
       <div>
-        <div class="flex items-center gap-4 mb-12">
+        <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
           <h2 id="services-title" class="text-3xl text-white font-mono uppercase">sudo list-services</h2>
           <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-          {services.map((service) => (
-            <article class="p-6 border border-gray-800 bg-[#161B22]/50 hover:bg-[#161B22] hover:border-[#00FF00]/30 transition-all group">
+          {services.map((service, i) => (
+            <article class="p-6 border border-gray-800 bg-[#161B22]/50 hover:bg-[#161B22] hover:border-[#00FF00]/30 transition-all group reveal-lift" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
               <div class="mb-4 bg-[#0D1117] w-12 h-12 rounded flex items-center justify-center border border-gray-800 group-hover:border-[#00FF00]/50 transition-colors">
                 <MaterialIcon name={service.icon} class="text-2xl text-[#00FF00]" aria-hidden="true" />
               </div>
@@ -169,13 +186,13 @@ const projects = [
 
     <section id="projects" aria-labelledby="projects-title" class="scroll-mt-32">
       <div>
-        <div class="flex items-center gap-4 mb-12">
+        <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
           <h2 id="projects-title" class="text-3xl text-white font-mono uppercase">cat /var/log/projects</h2>
           <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
         </div>
         <div class="space-y-8">
-          {projects.map((project) => (
-            <article class="border-l-2 border-gray-800 pl-6 py-2 hover:border-[#00FF00] transition-colors">
+          {projects.map((project, i) => (
+            <article class="border-l-2 border-gray-800 pl-6 py-2 hover:border-[#00FF00] transition-colors reveal-static" data-reveal="left" style={`--reveal-delay: ${i * 110}ms`}>
               <p class="text-xs text-[#00FF00] font-mono mb-2 uppercase tracking-widest">{project.category}</p>
               <h3 class="text-2xl text-gray-200 font-mono mb-3">{project.name}</h3>
               <p class="text-gray-300 font-sans mb-4 max-w-3xl">{project.desc}</p>
@@ -192,11 +209,11 @@ const projects = [
 
     <section id="contact" aria-labelledby="contact-title" class="scroll-mt-32 pb-20">
       <div class="max-w-2xl">
-        <div class="flex items-center gap-4 mb-12">
+        <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
           <h2 id="contact-title" class="text-3xl text-white font-mono uppercase">./establish-link</h2>
           <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
         </div>
-        <div class="p-8 border border-gray-800 bg-[#161B22]/50 rounded-sm relative">
+        <div class="p-8 border border-gray-800 bg-[#161B22]/50 rounded-sm relative reveal-static" data-reveal>
           <div aria-hidden="true" class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#00FF00]"></div>
           <div aria-hidden="true" class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#00FF00]"></div>
           <div aria-hidden="true" class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#00FF00]"></div>
