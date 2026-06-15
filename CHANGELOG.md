@@ -5,6 +5,11 @@ All notable changes to NULLTRACE will be documented in this file.
 ## [Unreleased]
 
 - Reduced Google Fonts requests to only the weights used by the theme.
+- Added a central `src/config/site.ts` file for editable theme content and metadata.
+- Added an anonymized `# redacted-testimonials` section for client credibility quotes.
+- Added a hero social-proof row with animated impact counters.
+- Added a certification audit log for client trust signals.
+- Added an animated hero terminal typewriter sequence.
 
 ## [0.1.0] - 2026-06-15
 

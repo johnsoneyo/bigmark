@@ -17,10 +17,11 @@ It is built as a single-page landing portfolio with strong technical atmosphere,
 
 - Terminal-inspired landing page for cybersecurity professionals
 - Responsive fixed header with full-screen mobile menu
-- Hero section with animated intro, terminal cursor, and clear CTAs
+- Hero section with animated terminal typewriter sequence and clear CTAs
+- Hero social-proof row with animated terminal-style impact counters
 - Services section for penetration testing, incident response, auditing, and infrastructure security
 - Methodology timeline for explaining engagement flow
-- Terminal-style `/opt/tools` inventory instead of generic tool cards
+- Certification audit log for client trust signals
 - Project/case-study highlights
 - Contact form shell ready to connect to your preferred backend
 - Accessible skip link, focus states, landmarks, labels, and reduced-motion fallbacks
@@ -72,11 +73,9 @@ npm run lint
 Before publishing, update the project-specific values:
 
 - `site` in `astro.config.mjs`
-- SEO title, description, canonical behavior, and JSON-LD in `src/pages/index.astro`
-- Brand name, contact email, social links, services, projects, and footer links in `src/App.astro`
-- Tool inventory content in `src/components/Toolstack.astro`
-- Methodology steps in `src/components/Methodology.astro`
-- Icon names in `src/App.astro`, `src/components/Methodology.astro`, and `src/components/Toolstack.astro`
+- Brand, SEO metadata, JSON-LD values, navigation, hero copy, contact details, social links, services, methodology, tool inventory, projects, and footer text in `src/config/site.ts`
+- Canonical behavior in `src/pages/index.astro`
+- Icon names in `src/config/site.ts`
 - Contact form handling in the contact section
 - `public/favicon.svg` if you want a custom brand mark
 
@@ -136,11 +135,15 @@ The contact form is a theme shell and does not submit anywhere yet. Connect it t
 src/
   App.astro
   index.css
+  config/
+    site.ts
   pages/
     index.astro
   components/
+    Certifications.astro
     MaterialIcon.astro
     Methodology.astro
+    Testimonials.astro
     Toolstack.astro
 public/
   favicon.svg
@@ -156,10 +159,12 @@ See [CHANGELOG.md](CHANGELOG.md) for release notes.
 ## Publishing Checklist
 
 - Replace `https://nulltrace-two.vercel.app` with your real domain if you fork the theme
-- Replace `hello@nulltrace.security`
+- Replace `hello@nulltrace.security` in `src/config/site.ts`
 - Replace GitHub and LinkedIn placeholder URLs
 - Connect or remove the contact form
 - Update demo projects and services
+- Update demo certification entries
+- Update anonymized testimonials
 - Update structured data to match the real business/person
 - Run `npm run lint`
 - Run `npm run build`

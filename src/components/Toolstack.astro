@@ -1,36 +1,14 @@
 ---
 import MaterialIcon from './MaterialIcon.astro';
-const categories = [
-  {
-    name: 'offensive',
-    owner: 'redteam',
-    size: '28K',
-    tools: ['Burp Suite Pro', 'Metasploit', 'Cobalt Strike', 'Nmap', 'Wireshark'],
-  },
-  {
-    name: 'defensive',
-    owner: 'blueteam',
-    size: '19K',
-    tools: ['Splunk', 'Suricata', 'OSSEC', 'CrowdStrike Falcon'],
-  },
-  {
-    name: 'scripting-dev',
-    owner: 'operator',
-    size: '34K',
-    tools: ['Python', 'Bash', 'Go', 'Rust', 'PowerShell'],
-  },
-  {
-    name: 'cloud-iam',
-    owner: 'platform',
-    size: '23K',
-    tools: ['AWS Security Hub', 'Azure AD', 'Terraform', 'Docker/K8s'],
-  },
-];
+import { siteConfig } from '../config/site';
+
+const { sections, toolCategories } = siteConfig;
+const toolstack = sections.toolstack;
 ---
 
 <section id="toolstack" aria-labelledby="toolstack-title" class="scroll-mt-32">
   <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
-    <h2 id="toolstack-title" class="text-3xl text-white font-mono uppercase">ls -la /opt/tools</h2>
+    <h2 id="toolstack-title" class="text-3xl text-white font-mono uppercase">{toolstack.heading}</h2>
     <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
   </div>
 
@@ -41,16 +19,16 @@ const categories = [
         <span class="h-2.5 w-2.5 rounded-full bg-gray-700"></span>
         <span class="h-2.5 w-2.5 rounded-full bg-gray-700"></span>
       </div>
-      <span>/opt/tools - secure inventory</span>
+      <span>{toolstack.terminalTitle}</span>
     </div>
 
     <div class="p-4 md:p-6 font-mono">
       <div class="mb-5 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap text-xs text-gray-400 md:text-sm">
-        <span class="text-[#00FF00]">op@node</span>
+        <span class="text-[#00FF00]">{toolstack.promptUser}</span>
         <span aria-hidden="true" class="text-gray-700">:</span>
-        <span class="text-gray-300">/opt/tools</span>
+        <span class="text-gray-300">{toolstack.promptPath}</span>
         <span aria-hidden="true" class="text-gray-700">$</span>
-        <span>ls -la</span>
+        <span>{toolstack.command}</span>
       </div>
 
       <div class="hidden md:grid grid-cols-[120px_92px_92px_1fr] gap-4 border-b border-gray-800 pb-3 text-xs uppercase tracking-widest text-gray-300">
@@ -61,7 +39,7 @@ const categories = [
       </div>
 
       <div class="divide-y divide-gray-900">
-        {categories.map((cat, i) => (
+        {toolCategories.map((cat, i) => (
           <article class="grid gap-3 py-5 md:grid-cols-[120px_92px_92px_1fr] md:gap-4" data-reveal="left" style={`--reveal-delay: ${i * 90}ms`}>
             <div class="flex items-center gap-2 text-xs text-[#00FF00]">
               <MaterialIcon name="folder" class="text-base" aria-hidden="true" />
@@ -87,7 +65,7 @@ const categories = [
       </div>
 
       <div class="mt-4 border-t border-gray-900 pt-4 text-xs text-gray-300">
-        <span class="text-[#00FF00]">4</span> directories indexed, <span class="text-[#00FF00]">18</span> tools ready
+        <span class="text-[#00FF00]">{toolstack.summary.directories}</span> directories indexed, <span class="text-[#00FF00]">{toolstack.summary.tools}</span> tools ready
       </div>
     </div>
   </div>

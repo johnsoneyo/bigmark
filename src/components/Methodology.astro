@@ -1,32 +1,18 @@
 ---
 import MaterialIcon from './MaterialIcon.astro';
-const steps = [
-  {
-    title: 'Vulnerability Analysis',
-    desc: 'Identify flaws, misconfigurations, and outdated components before adversaries can exploit them.',
-    icon: 'target',
-  },
-  {
-    title: 'Exploitation',
-    desc: 'Execute proof-of-concept attacks safely to demonstrate real-world risk without disrupting service.',
-    icon: 'code_blocks',
-  },
-  {
-    title: 'Reporting & Remediation',
-    desc: 'Deliver actionable remediation guidance, prioritized for business impact and recovery speed.',
-    icon: 'check_circle',
-  },
-];
+import { siteConfig } from '../config/site';
+
+const { sections, methodology } = siteConfig;
 ---
 
 <section id="methodology" aria-labelledby="methodology-title" class="scroll-mt-32">
   <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
-    <h2 id="methodology-title" class="text-3xl text-white font-mono uppercase">cat /etc/methodology</h2>
+    <h2 id="methodology-title" class="text-3xl text-white font-mono uppercase">{sections.methodology.heading}</h2>
     <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
   </div>
 
   <ol class="grid md:grid-cols-3 gap-4">
-    {steps.map((step, i) => (
+    {methodology.map((step, i) => (
       <li class="p-5 border border-gray-800 bg-[#161B22]/50 flex flex-col items-start gap-4 hover:border-[#00FF00]/40 transition-colors relative overflow-hidden reveal-lift" data-reveal style={`--reveal-delay: ${i * 100}ms`}>
         <MaterialIcon name={step.icon} class="text-3xl text-[#00FF00]" aria-hidden="true" />
         <div>
