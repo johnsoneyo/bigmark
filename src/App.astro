@@ -1,10 +1,7 @@
 ---
 import Methodology from './components/Methodology.astro';
 import Toolstack from './components/Toolstack.astro';
-import LockIcon from './components/icons/lock.astro';
-import ServerIcon from './components/icons/server.astro';
-import ShieldIcon from './components/icons/shield.astro';
-import CpuIcon from './components/icons/cpu.astro';
+import MaterialIcon from './components/MaterialIcon.astro';
 const navLinks = ['Services', 'Methodology', 'Projects', 'Contact'];
 const contactEmail = 'hello@nulltrace.security';
 const socialLinks = [
@@ -15,22 +12,22 @@ const services = [
   {
     title: 'Penetration Testing',
     desc: 'Comprehensive red-team operations simulating advanced persistent threats to uncover critical vulnerabilities.',
-    Icon: LockIcon,
+    icon: 'lock',
   },
   {
     title: 'Incident Response',
     desc: 'Rapid containment, eradication, and recovery from active breaches. Digital forensics and malware analysis.',
-    Icon: ServerIcon,
+    icon: 'dns',
   },
   {
     title: 'Security Auditing',
     desc: 'Code reviews, cloud infrastructure assessments, and compliance checks (SOC2, HIPAA) for robust posture.',
-    Icon: ShieldIcon,
+    icon: 'shield',
   },
   {
     title: 'Infrastructure Security',
     desc: 'Zero-trust architecture implementation, network segmentation, and secure CI/CD pipeline integration.',
-    Icon: CpuIcon,
+    icon: 'memory',
   },
 ];
 const projects = [
@@ -52,10 +49,9 @@ const projects = [
 <div class="min-h-screen terminal-scroll overflow-x-hidden relative bg-[#0D1117]">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0D1117]/80 backdrop-blur-md border-b border-gray-800">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0D1117] border-b border-gray-800">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-[#00FF00] font-mono" aria-label="NULLTRACE home">
-        <span class="text-xl">⌁</span>
+      <a href="/" class="site-logo flex items-center gap-2 text-[#00FF00] font-mono" aria-label="NULLTRACE home">
         <span class="font-bold tracking-tight">./NULLTRACE</span>
       </a>
       <nav aria-label="Primary navigation" class="hidden md:flex gap-6 font-mono text-sm shadow-sm backdrop-blur-none">
@@ -66,14 +62,66 @@ const projects = [
         ))}
       </nav>
       <div class="md:hidden">
-        <button type="button" aria-label="Open menu" class="flex h-10 w-10 items-center justify-center border border-gray-800 text-[#00FF00] transition-colors hover:border-[#00FF00]/50 hover:bg-[#00FF00]/10">
-          <span class="text-xl">≡</span>
+        <button type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-button class="flex h-10 w-10 items-center justify-center border border-gray-800 text-[#00FF00] transition-colors hover:border-[#00FF00]/50 hover:bg-[#00FF00]/10">
+          <MaterialIcon name="menu" class="text-2xl" aria-hidden="true" data-menu-icon />
         </button>
       </div>
     </div>
   </header>
 
-  <main id="main-content" class="relative z-10 max-w-5xl mx-auto px-6 py-24 space-y-32">
+  <nav id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu class="mobile-menu-panel fixed inset-x-0 bottom-0 top-16 z-40 hidden border-t border-gray-800 px-6 py-6 font-mono text-sm md:hidden">
+    <div class="mx-auto flex h-full max-w-7xl flex-col justify-between">
+      <div class="flex flex-col gap-3">
+        {navLinks.map((item) => (
+          <a href={`#${item.toLowerCase()}`} class="border-b border-gray-900 py-3 text-gray-300 hover:text-[#00FF00] transition-colors" data-mobile-menu-link>
+            <span class="text-gray-500 mr-1" aria-hidden="true">~/</span>{item.toLowerCase()}
+          </a>
+        ))}
+      </div>
+
+      <div class="border-t border-gray-800 pt-5 text-xs uppercase tracking-widest text-gray-300">
+        <p class="mb-4 text-gray-500">secure channels</p>
+        <div class="flex flex-wrap gap-4">
+          <a href={`mailto:${contactEmail}`} class="hover:text-[#00FF00] transition-colors" data-mobile-menu-link>EMAIL</a>
+          {socialLinks.map((link) => (
+            <a href={link.href} class="hover:text-[#00FF00] transition-colors" data-mobile-menu-link>{link.label.toUpperCase()}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const menuButton = document.querySelector('[data-mobile-menu-button]');
+    const mobileMenu = document.querySelector('[data-mobile-menu]');
+    const menuIcon = document.querySelector('[data-menu-icon]');
+
+    const setMenuOpen = (isOpen) => {
+      mobileMenu?.classList.toggle('hidden', !isOpen);
+      menuButton?.setAttribute('aria-expanded', String(isOpen));
+      menuButton?.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (menuIcon) {
+        menuIcon.textContent = isOpen ? 'close' : 'menu';
+      }
+    };
+
+    menuButton?.addEventListener('click', () => {
+      setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.querySelectorAll('[data-mobile-menu-link]').forEach((link) => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    });
+  </script>
+
+  <main id="main-content" class="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-0 space-y-32">
     <section aria-labelledby="hero-title" class="relative pt-20 lg:pt-32 flex flex-col items-start min-h-[60vh] justify-center overflow-hidden">
       <div class="relative z-10">
         <p class="font-mono text-[#00FF00] mb-4">&gt;&nbsp;whoami<span aria-hidden="true" class="inline-block w-2 h-5 ml-2 align-[-3px] bg-[#00FF00] animate-cursor-blink"></span></p>
@@ -106,7 +154,7 @@ const projects = [
           {services.map((service) => (
             <article class="p-6 border border-gray-800 bg-[#161B22]/50 hover:bg-[#161B22] hover:border-[#00FF00]/30 transition-all group">
               <div class="mb-4 bg-[#0D1117] w-12 h-12 rounded flex items-center justify-center border border-gray-800 group-hover:border-[#00FF00]/50 transition-colors">
-                <component this={service.Icon} class="h-6 w-6 text-[#00FF00]" aria-hidden="true" />
+                <MaterialIcon name={service.icon} class="text-2xl text-[#00FF00]" aria-hidden="true" />
               </div>
               <h3 class="text-xl text-gray-200 mb-3 font-mono">{service.title}</h3>
               <p class="text-sm text-gray-300 font-sans leading-relaxed">{service.desc}</p>
@@ -170,7 +218,7 @@ const projects = [
       </div>
     </section>
 
-    <footer class="border-t border-gray-900 bg-[#0D1117] py-8 mt-auto">
+    <footer class="border-t border-gray-900 bg-[#0D1117] py-3 mt-auto">
       <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-300">
         <p>CONNECTION SECURE // 0x{new Date().getFullYear().toString(16).toUpperCase()}</p>
         <div class="flex gap-4">

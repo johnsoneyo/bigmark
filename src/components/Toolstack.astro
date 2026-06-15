@@ -1,6 +1,5 @@
 ---
-import FolderIcon from './icons/folder.astro';
-import CpuIcon from './icons/cpu.astro';
+import MaterialIcon from './MaterialIcon.astro';
 const categories = [
   {
     name: 'offensive',
@@ -46,12 +45,12 @@ const categories = [
     </div>
 
     <div class="p-4 md:p-6 font-mono">
-      <div class="mb-5 flex items-center gap-2 text-sm text-gray-400">
-        <span class="text-[#00FF00]">operator@node</span>
+      <div class="mb-5 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap text-xs text-gray-400 md:text-sm">
+        <span class="text-[#00FF00]">op@node</span>
         <span aria-hidden="true" class="text-gray-700">:</span>
         <span class="text-gray-300">/opt/tools</span>
         <span aria-hidden="true" class="text-gray-700">$</span>
-        <span>ls -la --grouped</span>
+        <span>ls -la</span>
       </div>
 
       <div class="hidden md:grid grid-cols-[120px_92px_92px_1fr] gap-4 border-b border-gray-800 pb-3 text-xs uppercase tracking-widest text-gray-300">
@@ -65,14 +64,14 @@ const categories = [
         {categories.map((cat, i) => (
           <article class="grid gap-3 py-5 md:grid-cols-[120px_92px_92px_1fr] md:gap-4">
             <div class="flex items-center gap-2 text-xs text-[#00FF00]">
-              <FolderIcon class="h-4 w-4" aria-hidden="true" />
+              <MaterialIcon name="folder" class="text-base" aria-hidden="true" />
               <span>drwxr-x---</span>
             </div>
             <div class="text-xs text-gray-300"><span class="sr-only">Owner: </span>{cat.owner}</div>
             <div class="text-xs text-gray-300"><span class="sr-only">Size: </span>{cat.size}</div>
             <div>
               <div class="mb-3 flex items-center gap-2 text-sm text-gray-200">
-                <CpuIcon class="h-4 w-4" aria-hidden="true" />
+                <MaterialIcon name="memory" class="text-base" aria-hidden="true" />
                 <span>./{cat.name}</span>
               </div>
               <div class="flex flex-wrap gap-2">

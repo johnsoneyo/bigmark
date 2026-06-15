@@ -1,22 +1,20 @@
 ---
-import TargetIcon from './icons/target.astro';
-import FileCodeIcon from './icons/file-code.astro';
-import CheckCircleIcon from './icons/check-circle.astro';
+import MaterialIcon from './MaterialIcon.astro';
 const steps = [
   {
     title: 'Vulnerability Analysis',
     desc: 'Identify flaws, misconfigurations, and outdated components before adversaries can exploit them.',
-    Icon: TargetIcon,
+    icon: 'target',
   },
   {
     title: 'Exploitation',
     desc: 'Execute proof-of-concept attacks safely to demonstrate real-world risk without disrupting service.',
-    Icon: FileCodeIcon,
+    icon: 'code_blocks',
   },
   {
     title: 'Reporting & Remediation',
     desc: 'Deliver actionable remediation guidance, prioritized for business impact and recovery speed.',
-    Icon: CheckCircleIcon,
+    icon: 'check_circle',
   },
 ];
 ---
@@ -30,7 +28,7 @@ const steps = [
   <ol class="grid md:grid-cols-3 gap-4">
     {steps.map((step) => (
       <li class="p-5 border border-gray-800 bg-[#161B22]/50 flex flex-col items-start gap-4 hover:border-[#00FF00]/40 transition-colors relative overflow-hidden">
-        <step.Icon class="h-8 w-8 text-[#00FF00]" aria-hidden="true" />
+        <MaterialIcon name={step.icon} class="text-3xl text-[#00FF00]" aria-hidden="true" />
         <div>
           <h3 class="text-white font-mono text-sm uppercase mb-2">{step.title}</h3>
           <p class="text-gray-300 text-xs font-sans leading-relaxed">{step.desc}</p>
