@@ -2,6 +2,8 @@ export const siteConfig = {
   brand: {
     name: 'big-mark.de',
     logoText: './big-mark.de',
+    // path to the logo image placed in /public
+    logoImage: '/big-mark-logo.png',
   },
   seo: {
     title: 'big-mark.de - Contracted IT Consulting and Digital Solutions',
