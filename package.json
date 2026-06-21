@@ -5,6 +5,9 @@
   "description": "NULLTRACE is a dark terminal-inspired Astro theme for security consultants and cybersecurity portfolios.",
   "license": "MIT",
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev --port=3000 --host=0.0.0.0",
     "build": "astro build",
