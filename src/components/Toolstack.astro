@@ -12,10 +12,10 @@ const toolstack = sections.toolstack;
     <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
   </div>
 
-  <div class="border border-gray-800 bg-[#05080D]/80 shadow-[0_0_0_1px_rgba(0,255,0,0.03)] reveal-static" data-reveal>
+  <div class="border border-gray-800 bg-[#05080D]/80 shadow-[0_0_0_1px_rgba(11,92,255,0.03)] reveal-static" data-reveal>
     <div class="flex items-center justify-between gap-4 border-b border-gray-800 bg-[#161B22]/60 px-4 py-3 font-mono text-xs text-gray-300">
       <div aria-hidden="true" class="flex items-center gap-2">
-        <span class="h-2.5 w-2.5 rounded-full bg-[#00FF00]/70"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-[#0B5CFF]/70"></span>
         <span class="h-2.5 w-2.5 rounded-full bg-gray-700"></span>
         <span class="h-2.5 w-2.5 rounded-full bg-gray-700"></span>
       </div>
@@ -24,7 +24,7 @@ const toolstack = sections.toolstack;
 
     <div class="p-4 md:p-6 font-mono">
       <div class="mb-5 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap text-xs text-gray-400 md:text-sm">
-        <span class="text-[#00FF00]">{toolstack.promptUser}</span>
+        <span class="text-[#0B5CFF]">{toolstack.promptUser}</span>
         <span aria-hidden="true" class="text-gray-700">:</span>
         <span class="text-gray-300">{toolstack.promptPath}</span>
         <span aria-hidden="true" class="text-gray-700">$</span>
@@ -41,7 +41,7 @@ const toolstack = sections.toolstack;
       <div class="divide-y divide-gray-900">
         {toolCategories.map((cat, i) => (
           <article class="grid gap-3 py-5 md:grid-cols-[120px_92px_92px_1fr] md:gap-4" data-reveal="left" style={`--reveal-delay: ${i * 90}ms`}>
-            <div class="flex items-center gap-2 text-xs text-[#00FF00]">
+            <div class="flex items-center gap-2 text-xs text-[#0B5CFF]">
               <MaterialIcon name="folder" class="text-base" aria-hidden="true" />
               <span>drwxr-x---</span>
             </div>
@@ -54,7 +54,7 @@ const toolstack = sections.toolstack;
               </div>
               <div class="flex flex-wrap gap-2">
                 {cat.tools.map((tool) => (
-                  <span class="border border-gray-800 bg-[#0D1117] px-2.5 py-1 text-xs text-gray-300 transition-colors hover:border-[#00FF00]/40 hover:text-gray-200">
+                  <span class="border border-gray-800 bg-[#0D1117] px-2.5 py-1 text-xs text-gray-300 transition-colors hover:border-[#0B5CFF]/40 hover:text-gray-200">
                     {tool}
                   </span>
                 ))}
@@ -65,7 +65,7 @@ const toolstack = sections.toolstack;
       </div>
 
       <div class="mt-4 border-t border-gray-900 pt-4 text-xs text-gray-300">
-        <span class="text-[#00FF00]">{toolstack.summary.directories}</span> directories indexed, <span class="text-[#00FF00]">{toolstack.summary.tools}</span> tools ready
+        <span class="text-[#0B5CFF]">{toolstack.summary.directories}</span> directories indexed, <span class="text-[#0B5CFF]">{toolstack.summary.tools}</span> tools ready
       </div>
     </div>
   </div>
