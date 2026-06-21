@@ -1,0 +1,95 @@
+---
+import App from "../../App.astro";
+import "../../index.css";
+import {
+    defaultLocale,
+    getSiteData,
+    locales,
+    localeLabels,
+} from "../../config/site";
+
+export async function getStaticPaths() {
+    return locales.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as (typeof locales)[number];
+if (!locales.includes(lang)) {
+    throw new Error(`Unsupported locale: ${lang}`);
+}
+
+const data = getSiteData(lang);
+const canonicalUrl = Astro.site
+    ? new URL(Astro.url.pathname, Astro.site).toString()
+    : Astro.url.toString();
+const alternateUrl = Astro.site
+    ? new URL(`/${data.alternateLocale}/`, Astro.site).toString()
+    : `/${data.alternateLocale}/`;
+const defaultUrl = Astro.site
+    ? new URL(`/${defaultLocale}/`, Astro.site).toString()
+    : `/${defaultLocale}/`;
+---
+
+<!doctype html>
+<html lang={lang}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={data.seo.description} />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content={data.seo.author} />
+        <meta name="keywords" content={data.seo.keywords} />
+        <meta name="theme-color" content={data.seo.themeColor} />
+        <link rel="canonical" href={canonicalUrl} />
+        <link
+            rel="alternate"
+            hrefLang="de"
+            href={data.locale === "de" ? canonicalUrl : `${defaultUrl}`}
+        />
+        <link
+            rel="alternate"
+            hrefLang="en"
+            href={data.locale === "en" ? canonicalUrl : `${alternateUrl}`}
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={data.seo.title} />
+        <meta property="og:description" content={data.seo.description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content={data.seo.siteName} />
+
+        <meta name="twitter:card" content={data.seo.twitterCard} />
+        <meta name="twitter:title" content={data.seo.title} />
+        <meta name="twitter:description" content={data.seo.description} />
+
+        <script is:inline>
+            document.documentElement.classList.add("js");
+        </script>
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": data.jsonLd.type,
+                name: data.brand.name,
+                url: canonicalUrl,
+                email: data.contact.email,
+                description: data.seo.description,
+                areaServed: data.jsonLd.areaServed,
+                serviceType: data.jsonLd.serviceType,
+            })}
+        />
+        <noscript>
+            <style>
+                [style*="opacity:0"],
+                [style*="opacity: 0"] {
+                    opacity: 1 !important;
+                    transform: none !important;
+                }
+            </style>
+        </noscript>
+        <title>{data.seo.title}</title>
+    </head>
+    <body>
+        <App data={data} />
+    </body>
+</html>

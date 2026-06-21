@@ -4,7 +4,6 @@ import Methodology from "./components/Methodology.astro";
 import Testimonials from "./components/Testimonials.astro";
 import Toolstack from "./components/Toolstack.astro";
 import MaterialIcon from "./components/MaterialIcon.astro";
-import { siteConfig } from "./config/site";
 
 const {
   brand,
@@ -16,7 +15,9 @@ const {
   services,
   projects,
   footer,
-} = siteConfig;
+  alternateLocale,
+  alternateLabel,
+} = Astro.props.data;
 ---
 
 <div
@@ -65,6 +66,15 @@ const {
           ))
         }
       </nav>
+      <div class="hidden md:flex items-center gap-4">
+        <a
+          href={`/${alternateLocale}/`}
+          class="text-sm uppercase tracking-widest text-[#0B5CFF] hover:text-white transition-colors"
+          aria-label={`Switch to ${alternateLabel}`}
+        >
+          {alternateLabel}
+        </a>
+      </div>
       <div class="md:hidden">
         <button
           type="button"
@@ -329,9 +339,9 @@ const {
       </div>
     </section>
 
-    <Methodology />
-    <Certifications />
-    <Toolstack />
+    <Methodology data={Astro.props.data} />
+    <Certifications data={Astro.props.data} />
+    <Toolstack data={Astro.props.data} />
 
     <section
       id="projects"
@@ -382,7 +392,7 @@ const {
       </div>
     </section>
 
-    <Testimonials />
+    <Testimonials data={Astro.props.data} />
 
     <section
       id="contact"
