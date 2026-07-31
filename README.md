@@ -18,11 +18,11 @@ It is built as a single-page landing portfolio with strong technical atmosphere,
 - Terminal-inspired landing page for cybersecurity professionals
 - Responsive fixed header with full-screen mobile menu
 - Hero section with animated terminal typewriter sequence and clear CTAs
-- Hero social-proof row with animated terminal-style impact counters
+- Optional terminal-style impact counters for established, verifiable metrics
 - Services section for penetration testing, incident response, auditing, and infrastructure security
 - Methodology timeline for explaining engagement flow
 - Certification audit log for client trust signals
-- Project/case-study highlights
+- Example engagement highlights that can later become verified case studies
 - Contact form shell ready to connect to your preferred backend
 - Accessible skip link, focus states, landmarks, labels, and reduced-motion fallbacks
 - Server-rendered Astro output for better SEO and no-JS readability
@@ -129,6 +129,20 @@ The included copy is starter/demo content. Replace it with real services, projec
 
 The contact form is a theme shell and does not submit anywhere yet. Connect it to your preferred form provider, server action, or API endpoint.
 
+### Future trust signals
+
+Because this site represents a new company, client-count metrics, success-rate claims, and testimonials are intentionally not shown. The project section is currently labelled as example engagements and does not claim that the work was completed for a client.
+
+Consider enabling these trust signals later, but only when they are supported by real records and the client has approved publication:
+
+- Add impact counters after defining consistent measurements for clients served, years of relevant experience, or completed engagements.
+- Publish testimonials only with permission, accurate attribution, and wording approved by the person or company quoted. Do not label feedback as “verified” unless there is a verification process.
+- Convert an example engagement into a case study only after the work is complete. Clearly state the scope, the company's contribution, and measurable outcomes that can be substantiated.
+- Keep confidential clients anonymous when required, and confirm that even anonymized details cannot identify them unintentionally.
+- Review all claims periodically and remove or update anything that is no longer accurate.
+
+The former testimonial layout remains available in `src/components/Testimonials.astro`. To enable it in the future, add genuine localized testimonial data and section labels to `src/config/site.ts`, then import and render the component from `src/App.astro`. Impact counters can likewise be restored in the hero using verified localized values from `src/config/site.ts`.
+
 ## Project Structure
 
 ```txt
@@ -162,9 +176,10 @@ See [CHANGELOG.md](CHANGELOG.md) for release notes.
 - Replace `hello@nulltrace.security` in `src/config/site.ts`
 - Replace GitHub and LinkedIn placeholder URLs
 - Connect or remove the contact form
-- Update demo projects and services
+- Update example projects and services
 - Update demo certification entries
-- Update anonymized testimonials
+- Add testimonials only after receiving publication approval
+- Add client or outcome metrics only when they can be substantiated
 - Update structured data to match the real business/person
 - Run `npm run lint`
 - Run `npm run build`

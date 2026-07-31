@@ -1,7 +1,6 @@
 ---
 import Certifications from "./components/Certifications.astro";
 import Methodology from "./components/Methodology.astro";
-import Testimonials from "./components/Testimonials.astro";
 import Toolstack from "./components/Toolstack.astro";
 import MaterialIcon from "./components/MaterialIcon.astro";
 
@@ -267,29 +266,6 @@ const {
             {hero.secondaryCta.label}
           </a>
         </div>
-        <div
-          class="mt-8 font-mono reveal-static"
-          data-reveal
-          style="--reveal-delay: 560ms"
-        >
-          <dl class="flex flex-wrap gap-x-8 gap-y-4 text-xs">
-            {
-              hero.proof.stats.map((stat) => (
-                <div class="min-w-[9rem]">
-                  <dt class="text-gray-500">&gt; {stat.label}</dt>
-                  <dd class="mt-1 text-2xl text-gray-100">
-                    <span
-                      data-count-target={stat.value}
-                      data-count-suffix={stat.suffix}
-                    >
-                      0{stat.suffix}
-                    </span>
-                  </dd>
-                </div>
-              ))
-            }
-          </dl>
-        </div>
       </div>
     </section>
 
@@ -391,8 +367,6 @@ const {
         </div>
       </div>
     </section>
-
-    <Testimonials data={Astro.props.data} />
 
     <section
       id="contact"

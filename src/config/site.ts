@@ -46,7 +46,7 @@ export const translations = {
       { label: 'Leistungen', href: '#services' },
       { label: 'Vorgehen', href: '#methodology' },
       { label: 'Zertifikate', href: '#certifications' },
-      { label: 'Projekte', href: '#projects' },
+      { label: 'Projektbeispiele', href: '#projects' },
       { label: 'Kontakt', href: '#contact' },
     ],
     contact: {
@@ -73,13 +73,6 @@ export const translations = {
         'Ich unterstütze B2B-Kunden bei Planung, Aufbau und Betrieb digitaler Lösungen mit flexiblem IT-Consulting und Vertragslieferung.',
       primaryCta: { label: 'Angebot anfragen', href: '#contact' },
       secondaryCta: { label: 'Fähigkeiten ansehen', href: '#services' },
-      proof: {
-        stats: [
-          { value: 120, suffix: '+', label: 'betreute Kunden' },
-          { value: 15, suffix: '+', label: 'Jahre Erfahrung' },
-          { value: 99, suffix: '%', label: 'erfolgreiche Engagements' },
-        ],
-      },
     },
     sections: {
       services: { heading: 'Unser Leistungsspektrum' },
@@ -93,13 +86,7 @@ export const translations = {
         command: 'ls -la',
         summary: { directories: 4, tools: 18 },
       },
-      projects: { heading: 'Projekte' },
-      testimonials: {
-        heading: 'Erfolgsgeschichten',
-        eyebrow: 'Verifiziertes Feedback von Technologieführern',
-        note:
-          'Testimonials zeigen Geschäftsergebnisse, Governance-Verbesserungen und Lieferzuversicht.',
-      },
+      projects: { heading: 'Mögliche Projektbeispiele' },
       contact: { heading: 'Lassen Sie uns sprechen' },
     },
     services: [
@@ -197,37 +184,14 @@ export const translations = {
       {
         name: 'DigitalOps Revamp',
         category: 'IT-Transformation',
-        desc: 'Modernisierungsprogramm für einen B2B-Softwareanbieter, das Bereitstellungsgeschwindigkeit und Stabilität verbesserte.',
+        desc: 'Beispiel für ein schrittweises Modernisierungsprogramm, das die Bereitstellungsgeschwindigkeit und operative Stabilität verbessern kann.',
         tech: ['AWS', 'Terraform', 'GitHub Actions'],
       },
       {
         name: 'Cloud Migration Blueprint',
         category: 'Cloud-Strategie',
-        desc: 'Sicheres, kostenoptimiertes Cloud-Migrationskonzept für ein verteiltes Dienstleistungsunternehmen inklusive Governance und DR.',
+        desc: 'Beispiel für ein sicheres, kostenoptimiertes Cloud-Migrationskonzept inklusive Governance und Disaster Recovery.',
         tech: ['Azure', 'Okta', 'Kubernetes'],
-      },
-    ],
-    testimonials: [
-      {
-        quote:
-          'Die strategische Prüfung hat IT-Komplexität in eine klare Business-Case-Priorisierung überführt und geholfen, die entscheidenden Projekte zu identifizieren.',
-        attribution: 'VP Technik',
-        sector: 'B2B SaaS',
-        rating: 5,
-      },
-      {
-        quote:
-          'Der Cloud-Migrationsplan hat unser Risiko reduziert und den Übergang in produktionsbereite Infrastruktur beschleunigt.',
-        attribution: 'Director Operations',
-        sector: 'Enterprise Services',
-        rating: 5,
-      },
-      {
-        quote:
-          'Das Engagement lieferte Vertrauen auf Führungsebene und einen praktischen Fahrplan, den unsere Teams sofort umsetzen konnten.',
-        attribution: 'Head of Product',
-        sector: 'Technology Platform',
-        rating: 5,
       },
     ],
     footer: {
@@ -250,7 +214,7 @@ export const translations = {
       { label: 'Services', href: '#services' },
       { label: 'Approach', href: '#methodology' },
       { label: 'Credentials', href: '#certifications' },
-      { label: 'Case Studies', href: '#projects' },
+      { label: 'Project Examples', href: '#projects' },
       { label: 'Contact', href: '#contact' },
     ],
     contact: {
@@ -273,13 +237,6 @@ export const translations = {
         'I help B2B clients plan, build, and operate digital solutions through flexible IT consulting and contract delivery.',
       primaryCta: { label: 'Request Proposal', href: '#contact' },
       secondaryCta: { label: 'View Capabilities', href: '#services' },
-      proof: {
-        stats: [
-          { value: 120, suffix: '+', label: 'clients served' },
-          { value: 15, suffix: '+', label: 'years experience' },
-          { value: 99, suffix: '%', label: 'successful engagements' },
-        ],
-      },
     },
     sections: {
       services: { heading: 'Our Capabilities' },
@@ -293,13 +250,7 @@ export const translations = {
         command: 'ls -la',
         summary: { directories: 4, tools: 18 },
       },
-      projects: { heading: 'Case Studies' },
-      testimonials: {
-        heading: 'Client Success Stories',
-        eyebrow: 'Verified feedback from technology leaders',
-        note:
-          'Testimonials reflect business outcomes, governance improvements, and delivery confidence.',
-      },
+      projects: { heading: 'Example Engagements' },
       contact: { heading: 'Let’s Talk' },
     },
     services: [
@@ -397,37 +348,14 @@ export const translations = {
       {
         name: 'DigitalOps Revamp',
         category: 'IT Transformation',
-        desc: 'Delivered a phased modernization program for a B2B software provider, improving deployment velocity and operational stability.',
+        desc: 'An example of a phased modernization program designed to improve deployment velocity and operational stability.',
         tech: ['AWS', 'Terraform', 'GitHub Actions'],
       },
       {
         name: 'Cloud Migration Blueprint',
         category: 'Cloud Strategy',
-        desc: 'Designed a secure, cost-optimized cloud migration plan for a distributed services firm, including governance and disaster recovery.',
+        desc: 'An example of a secure, cost-optimized cloud migration plan covering governance and disaster recovery.',
         tech: ['Azure', 'Okta', 'Kubernetes'],
-      },
-    ],
-    testimonials: [
-      {
-        quote:
-          'Their strategic review converted IT complexity into a clear business case and helped us prioritize the projects that move the needle.',
-        attribution: 'VP of Technology',
-        sector: 'B2B SaaS',
-        rating: 5,
-      },
-      {
-        quote:
-          'The cloud migration plan reduced our risk exposure and accelerated our move to production-ready infrastructure.',
-        attribution: 'Director of Operations',
-        sector: 'Enterprise Services',
-        rating: 5,
-      },
-      {
-        quote:
-          'The engagement delivered executive-level confidence and a practical roadmap our teams could execute immediately.',
-        attribution: 'Head of Product',
-        sector: 'Technology Platform',
-        rating: 5,
       },
     ],
     footer: {
