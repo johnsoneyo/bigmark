@@ -1,18 +1,21 @@
 ---
-import App from "../../App.astro";
-import "../../index.css";
+import App from "../App.astro";
+import "../index.css";
 import {
     defaultLocale,
     getSiteData,
     locales,
     localeLabels,
-} from "../../config/site";
+    localePath,
+} from "../config/site";
 
 export async function getStaticPaths() {
-    return locales.map((lang) => ({ params: { lang } }));
+    return locales.map((lang) => ({
+        params: { lang: lang === defaultLocale ? undefined : lang },
+    }));
 }
 
-const lang = Astro.params.lang as (typeof locales)[number];
+const lang = (Astro.params.lang ?? defaultLocale) as (typeof locales)[number];
 if (!locales.includes(lang)) {
     throw new Error(`Unsupported locale: ${lang}`);
 }
@@ -22,11 +25,11 @@ const canonicalUrl = Astro.site
     ? new URL(Astro.url.pathname, Astro.site).toString()
     : Astro.url.toString();
 const alternateUrl = Astro.site
-    ? new URL(`/${data.alternateLocale}/`, Astro.site).toString()
-    : `/${data.alternateLocale}/`;
+    ? new URL(localePath(data.alternateLocale), Astro.site).toString()
+    : localePath(data.alternateLocale);
 const defaultUrl = Astro.site
-    ? new URL(`/${defaultLocale}/`, Astro.site).toString()
-    : `/${defaultLocale}/`;
+    ? new URL(localePath(defaultLocale), Astro.site).toString()
+    : localePath(defaultLocale);
 ---
 
 <!doctype html>
@@ -50,9 +53,11 @@ const defaultUrl = Astro.site
             hrefLang="en"
             href={data.locale === "en" ? canonicalUrl : `${alternateUrl}`}
         />
+        <link rel="alternate" hreflang="x-default" href={defaultUrl} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content={lang === "de" ? "de_DE" : "en_US"} />
         <meta property="og:title" content={data.seo.title} />
         <meta property="og:description" content={data.seo.description} />
         <meta property="og:url" content={canonicalUrl} />
@@ -75,6 +80,19 @@ const defaultUrl = Astro.site
                 email: data.contact.email,
                 description: data.seo.description,
                 areaServed: data.jsonLd.areaServed,
+                address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "Karl-Marx-Straße 13",
+                    postalCode: "03044",
+                    addressLocality: "Cottbus",
+                    addressCountry: "DE",
+                },
+                founder: data.team
+                    .filter((person) => person.role.startsWith("Founder"))
+                    .map((person) => ({
+                    "@type": "Person",
+                    name: person.name,
+                })),
                 serviceType: data.jsonLd.serviceType,
             })}
         />
