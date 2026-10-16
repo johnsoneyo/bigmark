@@ -1,0 +1,100 @@
+---
+import "../index.css";
+
+const canonicalUrl = Astro.site
+    ? new URL("/impressum/", Astro.site).toString()
+    : Astro.url.toString();
+---
+
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Impressum von BIG-MARK IT Consult, Johnson Eyo, Cottbus." />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#0B5CFF" />
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>Impressum - BIG-MARK IT Consult</title>
+    </head>
+    <body class="bg-[#0D1117] text-gray-300 font-sans">
+        <header class="border-b border-gray-800">
+            <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+                <a href="/" class="text-[#5B8DFF] font-bold tracking-tight">BIG-MARK IT Consult</a>
+                <a href="/" class="text-sm text-gray-300 hover:text-[#5B8DFF] transition-colors">&larr; Zurück zur Startseite</a>
+            </div>
+        </header>
+
+        <main id="main-content" class="max-w-3xl mx-auto px-6 py-12 text-sm leading-relaxed">
+            <h1 class="text-3xl font-bold text-white mb-10">Impressum</h1>
+
+            <section class="mb-8">
+                <h2 class="text-lg font-bold text-white mb-2">Angaben gemäß § 5 DDG</h2>
+                <address class="not-italic">
+                    Johnson Eyo<br />
+                    BIG-MARK IT Consult<br />
+                    Karl-Marx-Straße 13<br />
+                    03044 Cottbus<br />
+                    Deutschland
+                </address>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-lg font-bold text-white mb-2">Vertreten durch</h2>
+                <p>Johnson Eyo</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-lg font-bold text-white mb-2">Kontakt</h2>
+                <p>
+                    Telefon: <a class="hover:text-[#5B8DFF] underline" href="tel:+491786588549">+49 178 6588549</a><br />
+                    E-Mail: <a class="hover:text-[#5B8DFF] underline" href="mailto:john@big-mark.de">john@big-mark.de</a>
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-lg font-bold text-white mb-2">Umsatzsteuer-ID</h2>
+                <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />DE464746333</p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-lg font-bold text-white mb-2">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+                <address class="not-italic">
+                    Johnson Eyo<br />
+                    Karl-Marx-Straße 13<br />
+                    03044 Cottbus
+                </address>
+            </section>
+
+            <h2 class="text-2xl font-bold text-white mb-6 border-t border-gray-800 pt-10">Haftungsausschluss</h2>
+
+            <section class="mb-8">
+                <h3 class="text-lg font-bold text-white mb-2">Haftung für Inhalte</h3>
+                <p>
+                    Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h3 class="text-lg font-bold text-white mb-2">Haftung für Links</h3>
+                <p>
+                    Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h3 class="text-lg font-bold text-white mb-2">Urheberrecht</h3>
+                <p>
+                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+                </p>
+            </section>
+        </main>
+        <footer class="border-t border-gray-900 py-6">
+            <div class="max-w-3xl mx-auto px-6 flex gap-6 text-xs text-gray-300">
+                <a href="/impressum/" class="hover:text-white">Impressum</a>
+                <a href="/datenschutz/" class="hover:text-white">Datenschutz</a>
+            </div>
+        </footer>
+    </body>
+</html>

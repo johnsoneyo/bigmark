@@ -1,8 +1,8 @@
 ---
-import Certifications from "./components/Certifications.astro";
 import Methodology from "./components/Methodology.astro";
 import Toolstack from "./components/Toolstack.astro";
 import MaterialIcon from "./components/MaterialIcon.astro";
+import { localePath, web3formsAccessKey } from "./config/site";
 
 const {
   brand,
@@ -13,27 +13,27 @@ const {
   sections,
   services,
   projects,
+  team,
   footer,
   alternateLocale,
   alternateLabel,
+  ui,
 } = Astro.props.data;
 ---
 
 <div
-  class="min-h-screen terminal-scroll overflow-x-hidden relative bg-[#0D1117]"
+  class="min-h-screen overflow-x-hidden relative bg-[#0D1117]"
 >
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link">{ui.skipLink}</a>
 
   <header
-    class="fixed top-0 left-0 right-0 z-50 bg-[#0D1117] border-b border-gray-800 reveal-static"
-    data-reveal
-    style="--reveal-delay: 40ms"
+    class="fixed top-0 left-0 right-0 z-50 bg-[#0D1117] border-b border-gray-800"
   >
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a
         href="/"
-        class="site-logo flex items-center gap-2 text-[#0B5CFF] font-mono"
-        aria-label={`${brand.name} home`}
+        class="site-logo flex items-center gap-2 text-[#5B8DFF] font-sans"
+        aria-label={`${brand.name} – ${ui.homeLabel}`}
       >
         {
           brand.logoImage ? (
@@ -48,47 +48,68 @@ const {
         }
       </a>
       <nav
-        aria-label="Primary navigation"
-        class="hidden md:flex gap-6 font-mono text-sm shadow-sm backdrop-blur-none"
+        aria-label={ui.primaryNav}
+        class="hidden md:flex gap-8 font-sans text-sm"
       >
         {
           navLinks.map((item) => (
             <a
               href={item.href}
-              class="text-gray-300 hover:text-[#0B5CFF] transition-colors drop-shadow-md"
+              class="text-gray-300 hover:text-white transition-colors"
             >
-              <span class="text-gray-500 mr-1" aria-hidden="true">
-                ~/
-              </span>
-              {item.label.toLowerCase()}
+              {item.label}
             </a>
           ))
         }
       </nav>
       <div class="hidden md:flex items-center gap-4">
         <a
-          href={`/${alternateLocale}/`}
-          class="text-sm uppercase tracking-widest text-[#0B5CFF] hover:text-white transition-colors"
-          aria-label={`Switch to ${alternateLabel}`}
+          href={localePath(alternateLocale)}
+          class="text-sm text-gray-300 hover:text-white transition-colors"
+          aria-label={ui.switchLanguage}
+          hreflang={alternateLocale}
+          lang={alternateLocale}
         >
           {alternateLabel}
+        </a>
+        <a
+          href={hero.primaryCta.href}
+          class="px-4 py-2 bg-[#0B5CFF] text-white text-sm font-medium hover:bg-[#0B5CFF]/90 transition-colors"
+        >
+          {hero.primaryCta.label}
         </a>
       </div>
       <div class="md:hidden">
         <button
           type="button"
-          aria-label="Open menu"
+          aria-label={ui.openMenu}
+          data-label-open={ui.openMenu}
+          data-label-close={ui.closeMenu}
           aria-controls="mobile-menu"
           aria-expanded="false"
           data-mobile-menu-button
-          class="flex h-10 w-10 items-center justify-center border border-gray-800 text-[#0B5CFF] transition-colors hover:border-[#0B5CFF]/50 hover:bg-[#0B5CFF]/10"
+          class="flex h-10 w-10 items-center justify-center border border-gray-800 text-[#5B8DFF] transition-colors hover:border-[#0B5CFF]/50 hover:bg-[#0B5CFF]/10"
         >
-          <MaterialIcon
-            name="menu"
-            class="text-2xl"
-            aria-hidden="true"
-            data-menu-icon
-          />
+          <svg
+            data-menu-open
+            class="h-6 w-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg
+          >
+          <svg
+            data-menu-close
+            class="hidden h-6 w-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg
+          >
         </button>
       </div>
     </div>
@@ -96,9 +117,9 @@ const {
 
   <nav
     id="mobile-menu"
-    aria-label="Mobile navigation"
+    aria-label={ui.mobileNav}
     data-mobile-menu
-    class="mobile-menu-panel fixed inset-x-0 bottom-0 top-16 z-40 hidden border-t border-gray-800 px-6 py-6 font-mono text-sm md:hidden"
+    class="mobile-menu-panel fixed inset-x-0 bottom-0 top-16 z-40 hidden border-t border-gray-800 px-6 py-6 font-sans text-base md:hidden"
   >
     <div class="mx-auto flex h-full max-w-7xl flex-col justify-between">
       <div class="flex flex-col gap-3">
@@ -106,36 +127,42 @@ const {
           navLinks.map((item) => (
             <a
               href={item.href}
-              class="border-b border-gray-900 py-3 text-gray-300 hover:text-[#0B5CFF] transition-colors"
+              class="border-b border-gray-900 py-3 text-gray-300 hover:text-[#5B8DFF] transition-colors"
               data-mobile-menu-link
             >
-              <span class="text-gray-500 mr-1" aria-hidden="true">
-                ~/
-              </span>
-              {item.label.toLowerCase()}
+              {item.label}
             </a>
           ))
         }
+        <a
+          href={localePath(alternateLocale)}
+          class="border-b border-gray-900 py-3 text-gray-300 hover:text-[#5B8DFF] transition-colors"
+          aria-label={ui.switchLanguage}
+          hreflang={alternateLocale}
+          lang={alternateLocale}
+        >
+          {alternateLabel}
+        </a>
       </div>
 
       <div
-        class="border-t border-gray-800 pt-5 text-xs uppercase tracking-widest text-gray-300"
+        class="border-t border-gray-800 pt-5 text-sm text-gray-300"
       >
-        <p class="mb-4 text-gray-500">secure channels</p>
+        <p class="mb-4 text-gray-500">{sections.contact.heading}</p>
         <div class="flex flex-wrap gap-4">
           <a
             href={`mailto:${contact.email}`}
-            class="hover:text-[#0B5CFF] transition-colors"
-            data-mobile-menu-link>EMAIL</a
+            class="hover:text-[#5B8DFF] transition-colors"
+            data-mobile-menu-link>{contact.emailLabel}</a
           >
           {
             socialLinks.map((link) => (
               <a
                 href={link.href}
-                class="hover:text-[#0B5CFF] transition-colors"
+                class="hover:text-[#5B8DFF] transition-colors"
                 data-mobile-menu-link
               >
-                {link.label.toUpperCase()}
+                {link.label}
               </a>
             ))
           }
@@ -147,19 +174,21 @@ const {
   <script>
     const menuButton = document.querySelector("[data-mobile-menu-button]");
     const mobileMenu = document.querySelector("[data-mobile-menu]");
-    const menuIcon = document.querySelector("[data-menu-icon]");
+    const iconOpen = document.querySelector("[data-menu-open]");
+    const iconClose = document.querySelector("[data-menu-close]");
 
     const setMenuOpen = (isOpen) => {
       mobileMenu?.classList.toggle("hidden", !isOpen);
       menuButton?.setAttribute("aria-expanded", String(isOpen));
       menuButton?.setAttribute(
         "aria-label",
-        isOpen ? "Close menu" : "Open menu",
+        isOpen
+          ? menuButton.dataset.labelClose
+          : menuButton.dataset.labelOpen,
       );
       document.body.style.overflow = isOpen ? "hidden" : "";
-      if (menuIcon) {
-        menuIcon.textContent = isOpen ? "close" : "menu";
-      }
+      iconOpen?.classList.toggle("hidden", isOpen);
+      iconClose?.classList.toggle("hidden", !isOpen);
     };
 
     menuButton?.addEventListener("click", () => {
@@ -211,29 +240,22 @@ const {
     >
       <div class="relative z-10">
         <p
-          class="font-mono text-[#0B5CFF] mb-4 reveal-static"
+          class="font-sans text-sm tracking-widest uppercase text-[#5B8DFF] mb-4 reveal-static"
           data-reveal
           style="--reveal-delay: 120ms"
         >
-          &gt;&nbsp;<span
-            data-terminal-typewriter
-            data-terminal-sequence={JSON.stringify(hero.terminalSequence)}
-            >{hero.command}</span
-          ><span
-            aria-hidden="true"
-            class="inline-block w-2 h-5 ml-2 align-[-3px] bg-[#0B5CFF] animate-cursor-blink"
-          ></span>
+          {hero.kicker}
         </p>
         <h1
           id="hero-title"
-          class="max-w-full text-4xl sm:text-5xl md:text-7xl font-mono text-white mb-6 uppercase tracking-normal leading-[0.95] reveal-static"
+          class="max-w-full text-4xl sm:text-5xl md:text-6xl !font-sans !font-semibold text-white mb-6 tracking-tight leading-[1.05] reveal-static"
           data-reveal
           style="--reveal-delay: 220ms"
         >
           {hero.title}
           <br />
           <span
-            class="text-[#0B5CFF] drop-shadow-[0_0_10px_rgba(11,92,255,0.4)]"
+            class="text-[#5B8DFF]"
             >{hero.highlightedTitle}</span
           >
         </h1>
@@ -245,13 +267,13 @@ const {
           {hero.description}
         </p>
         <div
-          class="flex flex-wrap gap-4 font-mono group reveal-static"
+          class="flex flex-wrap gap-4 font-sans group reveal-static"
           data-reveal
           style="--reveal-delay: 460ms"
         >
           <a
             href={hero.primaryCta.href}
-            class="relative px-6 py-3 bg-[#0B5CFF]/10 text-[#0B5CFF] border border-[#0B5CFF]/50 hover:bg-[#0B5CFF]/20 transition-all flex items-center gap-2"
+            class="relative px-6 py-3 bg-[#0B5CFF] text-white font-medium hover:bg-[#0B5CFF]/90 transition-all flex items-center gap-2"
           >
             {hero.primaryCta.label}
             <span
@@ -281,7 +303,7 @@ const {
         >
           <h2
             id="services-title"
-            class="text-3xl text-white font-mono uppercase"
+            class="text-3xl text-white"
           >
             {sections.services.heading}
           </h2>
@@ -298,11 +320,11 @@ const {
                 <div class="mb-8 flex h-12 w-12 items-center justify-start">
                   <MaterialIcon
                     name={service.icon}
-                    class="text-4xl text-gray-200 group-hover:text-[#0B5CFF] transition-colors"
+                    class="text-4xl text-gray-200 group-hover:text-[#5B8DFF] transition-colors"
                     aria-hidden="true"
                   />
                 </div>
-                <h3 class="text-xl text-gray-200 mb-3 font-mono">
+                <h3 class="text-xl text-gray-200 mb-3 font-sans">
                   {service.title}
                 </h3>
                 <p class="text-sm text-gray-300 font-sans leading-relaxed">
@@ -316,9 +338,10 @@ const {
     </section>
 
     <Methodology data={Astro.props.data} />
-    <Certifications data={Astro.props.data} />
     <Toolstack data={Astro.props.data} />
 
+    {
+      projects.length > 0 && (
     <section
       id="projects"
       aria-labelledby="projects-title"
@@ -331,7 +354,7 @@ const {
         >
           <h2
             id="projects-title"
-            class="text-3xl text-white font-mono uppercase"
+            class="text-3xl text-white"
           >
             {sections.projects.heading}
           </h2>
@@ -345,16 +368,16 @@ const {
                 data-reveal="left"
                 style={`--reveal-delay: ${i * 110}ms`}
               >
-                <p class="text-xs text-[#0B5CFF] font-mono mb-2 uppercase tracking-widest">
+                <p class="text-xs text-[#5B8DFF] font-sans mb-2 uppercase tracking-widest">
                   {project.category}
                 </p>
-                <h3 class="text-2xl text-gray-200 font-mono mb-3">
+                <h3 class="text-2xl text-gray-200 font-sans mb-3">
                   {project.name}
                 </h3>
                 <p class="text-gray-300 font-sans mb-4 max-w-3xl">
                   {project.desc}
                 </p>
-                <div class="flex gap-3 font-mono text-xs text-gray-300">
+                <div class="flex gap-3 font-sans text-xs text-gray-300">
                   {project.tech.map((t) => (
                     <span class="px-2 py-1 bg-gray-800/50 border border-gray-700/50 rounded">
                       {t}
@@ -365,6 +388,61 @@ const {
             ))
           }
         </div>
+      </div>
+    </section>
+      )
+    }
+
+    <section id="team" aria-labelledby="team-title" class="scroll-mt-32">
+      <div
+        class="flex items-center gap-4 mb-12 reveal-heading"
+        data-reveal="left"
+      >
+        <h2 id="team-title" class="text-3xl text-white">
+          {sections.team.heading}
+        </h2>
+        <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
+      </div>
+      <div class="grid gap-10 md:grid-cols-2">
+        {
+          team.map((person, i) => (
+            <article
+              class="flex gap-5 reveal-static"
+              data-reveal="left"
+              style={`--reveal-delay: ${i * 110}ms`}
+            >
+              {person.photo ? (
+                <img
+                  src={person.photo}
+                  alt={person.name}
+                  width="112"
+                  height="112"
+                  loading="lazy"
+                  class="h-28 w-28 shrink-0 object-cover grayscale border border-gray-800"
+                />
+              ) : (
+                <div
+                  aria-hidden="true"
+                  class="h-28 w-28 shrink-0 flex items-center justify-center border border-gray-800 bg-gray-900 font-sans text-2xl text-gray-500"
+                >
+                  {person.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </div>
+              )}
+              <div>
+                <h3 class="text-xl text-gray-200 font-sans">{person.name}</h3>
+                <p class="text-xs text-[#5B8DFF] font-sans mb-3 uppercase tracking-widest">
+                  {person.role}
+                </p>
+                <p class="text-gray-300 font-sans text-sm leading-relaxed">
+                  {person.bio}
+                </p>
+              </div>
+            </article>
+          ))
+        }
       </div>
     </section>
 
@@ -380,7 +458,7 @@ const {
         >
           <h2
             id="contact-title"
-            class="text-3xl text-white font-mono uppercase"
+            class="text-3xl text-white"
           >
             {sections.contact.heading}
           </h2>
@@ -390,32 +468,25 @@ const {
           class="p-8 border border-gray-800 bg-[#161B22]/50 rounded-sm relative reveal-static"
           data-reveal
         >
-          <div
-            aria-hidden="true"
-            class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#0B5CFF]"
-          >
-          </div>
-          <div
-            aria-hidden="true"
-            class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#0B5CFF]"
-          >
-          </div>
-          <div
-            aria-hidden="true"
-            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#0B5CFF]"
-          >
-          </div>
-          <div
-            aria-hidden="true"
-            class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#0B5CFF]"
-          >
-          </div>
 
-          <form class="space-y-6" aria-describedby="contact-help">
+          <form
+            action="https://api.web3forms.com/submit"
+            method="post"
+            class="space-y-6"
+            aria-describedby="contact-help"
+            data-contact-form
+            data-sending={contact.statusSending}
+            data-success={contact.statusSuccess}
+            data-error={contact.statusError}
+            data-subject={ui.formSubject}
+          >
+            <input type="hidden" name="access_key" value={web3formsAccessKey} />
+            <input type="hidden" name="subject" value={ui.formSubject} />
+            <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
             <div>
               <label
                 for="target-email"
-                class="block font-mono text-xs text-gray-300 mb-2"
+                class="block font-sans text-xs text-gray-300 mb-2"
                 >{contact.emailLabel}</label
               >
               <input
@@ -424,14 +495,14 @@ const {
                 type="email"
                 autocomplete="email"
                 required
-                class="w-full bg-[#0D1117] border border-gray-800 p-3 font-mono text-sm text-gray-200 focus:outline-none focus:border-[#0B5CFF]/50 transition-colors"
+                class="w-full bg-[#0D1117] border border-gray-800 p-3 font-sans text-sm text-gray-200 focus:outline-none focus:border-[#0B5CFF]/50 transition-colors"
                 placeholder={contact.emailPlaceholder}
               />
             </div>
             <div>
               <label
                 for="payload"
-                class="block font-mono text-xs text-gray-300 mb-2"
+                class="block font-sans text-xs text-gray-300 mb-2"
                 >{contact.messageLabel}</label
               >
               <textarea
@@ -439,144 +510,97 @@ const {
                 name="message"
                 rows="4"
                 required
-                class="w-full bg-[#0D1117] border border-gray-800 p-3 font-mono text-sm text-gray-200 focus:outline-none focus:border-[#0B5CFF]/50 transition-colors resize-none"
+                class="w-full bg-[#0D1117] border border-gray-800 p-3 font-sans text-sm text-gray-200 focus:outline-none focus:border-[#0B5CFF]/50 transition-colors resize-none"
                 placeholder={contact.messagePlaceholder}></textarea>
             </div>
             <p id="contact-help" class="text-xs text-gray-300">
               {contact.formHelp}
             </p>
+            <p class="text-xs text-gray-400">
+              {ui.privacyNotice}{" "}
+              <a href="/datenschutz/" class="underline hover:text-white"
+                >{ui.privacyLink}</a
+              >.
+            </p>
             <button
               type="submit"
-              class="w-full py-3 bg-[#0B5CFF]/10 text-[#0B5CFF] border border-[#0B5CFF]/50 hover:bg-[#0B5CFF]/20 font-mono transition-colors uppercase tracking-widest text-sm"
+              class="w-full py-3 bg-[#0B5CFF] text-white font-medium hover:bg-[#0B5CFF]/90 transition-colors text-sm"
               >{contact.submitLabel}</button
             >
+            <p
+              data-contact-status
+              role="status"
+              aria-live="polite"
+              class="text-sm text-gray-300 font-sans"
+            >
+            </p>
           </form>
         </div>
       </div>
     </section>
 
-    <footer class="border-t border-gray-900 bg-[#0D1117] py-3 mt-auto">
+  </main>
+  <footer class="border-t border-gray-900 bg-[#0D1117] py-3 mt-auto">
       <div
-        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-300"
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-sans text-gray-300"
       >
         <p>
-          {footer.status} // 0x{
-            new Date().getFullYear().toString(16).toUpperCase()
-          }
+          © {new Date().getFullYear()} {footer.status}
         </p>
         <div class="flex gap-4">
           <a
             href={`mailto:${contact.email}`}
-            class="hover:text-[#0B5CFF] transition-colors">EMAIL</a
+            class="hover:text-white transition-colors">{contact.emailLabel}</a
+          >
+          <a href="/impressum/" class="hover:text-white transition-colors"
+            >{ui.impressum}</a
+          >
+          <a href="/datenschutz/" class="hover:text-white transition-colors"
+            >{ui.privacy}</a
           >
           {
             socialLinks.map((link) => (
               <a
                 href={link.href}
-                class="hover:text-[#0B5CFF] transition-colors"
+                class="hover:text-[#5B8DFF] transition-colors"
               >
-                {link.label.toUpperCase()}
+                {link.label}
               </a>
             ))
           }
         </div>
       </div>
-    </footer>
-  </main>
+  </footer>
 </div>
 
 <script is:inline>
   (() => {
-    const typewriter = document.querySelector("[data-terminal-typewriter]");
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    if (typewriter) {
-      const parsedSequence = JSON.parse(
-        typewriter.getAttribute("data-terminal-sequence") || "[]",
-      );
-      const sequence = Array.isArray(parsedSequence) ? parsedSequence : [];
-
-      if (motionQuery.matches || !sequence.length) {
-        typewriter.textContent =
-          sequence[sequence.length - 1] || typewriter.textContent;
-      } else {
-        typewriter.textContent = "";
-
-        const typeLine = (lineIndex = 0, charIndex = 0) => {
-          const line = sequence[lineIndex];
-
-          if (charIndex <= line.length) {
-            typewriter.textContent = line.slice(0, charIndex);
-            window.setTimeout(() => typeLine(lineIndex, charIndex + 1), 42);
-            return;
-          }
-
-          if (lineIndex < sequence.length - 1) {
-            window.setTimeout(() => typeLine(lineIndex + 1, 0), 520);
-            return;
-          }
-
-          typewriter.textContent = line;
-        };
-
-        window.setTimeout(() => typeLine(), 250);
-      }
-    }
-
-    const counters = Array.from(
-      document.querySelectorAll("[data-count-target]"),
-    );
-    if (!counters.length) return;
-
-    const setCounterValue = (counter, value) => {
-      const suffix = counter.getAttribute("data-count-suffix") ?? "";
-      counter.textContent = `${value}${suffix}`;
-    };
-
-    const completeCounter = (counter) => {
-      const target = Number(counter.getAttribute("data-count-target") ?? 0);
-      setCounterValue(counter, target);
-    };
-
-    const animateCounter = (counter) => {
-      if (counter.getAttribute("data-count-complete") === "true") return;
-      counter.setAttribute("data-count-complete", "true");
-
-      const target = Number(counter.getAttribute("data-count-target") ?? 0);
-      const duration = 900;
-      const start = performance.now();
-
-      const tick = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-        setCounterValue(counter, Math.round(target * easedProgress));
-
-        if (progress < 1) {
-          requestAnimationFrame(tick);
-        } else {
-          completeCounter(counter);
+    const form = document.querySelector("[data-contact-form]");
+    if (form) {
+      const status = form.querySelector("[data-contact-status]");
+      const button = form.querySelector("button[type=submit]");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(form));
+        data.subject = form.dataset.subject;
+        status.textContent = form.dataset.sending;
+        button.disabled = true;
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify(data),
+          });
+          const result = await response.json();
+          if (!response.ok || !result.success) throw new Error(result.message);
+          status.textContent = form.dataset.success;
+          form.reset();
+        } catch (error) {
+          status.textContent = form.dataset.error;
+        } finally {
+          button.disabled = false;
         }
-      };
-
-      requestAnimationFrame(tick);
-    };
-
-    if (motionQuery.matches || !("IntersectionObserver" in window)) {
-      counters.forEach(completeCounter);
-      return;
+      });
     }
-
-    const counterObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.6 },
-    );
-
-    counters.forEach((counter) => counterObserver.observe(counter));
   })();
 </script>
