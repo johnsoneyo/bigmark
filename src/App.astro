@@ -478,6 +478,7 @@ const {
             data-sending={contact.statusSending}
             data-success={contact.statusSuccess}
             data-error={contact.statusError}
+            data-captcha-required={contact.statusCaptcha}
             data-subject={ui.formSubject}
           >
             <input type="hidden" name="access_key" value={web3formsAccessKey} />
@@ -513,6 +514,7 @@ const {
                 class="w-full bg-[#0D1117] border border-gray-800 p-3 font-sans text-sm text-gray-200 focus:outline-none focus:border-[#0B5CFF]/50 transition-colors resize-none"
                 placeholder={contact.messagePlaceholder}></textarea>
             </div>
+            <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
             <p id="contact-help" class="text-xs text-gray-300">
               {contact.formHelp}
             </p>
@@ -573,6 +575,9 @@ const {
   </footer>
 </div>
 
+<script is:inline src="https://web3forms.com/client/script.js" async defer
+></script>
+
 <script is:inline>
   (() => {
     const form = document.querySelector("[data-contact-form]");
@@ -582,6 +587,10 @@ const {
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(form));
+        if (!data["h-captcha-response"]) {
+          status.textContent = form.dataset.captchaRequired;
+          return;
+        }
         data.subject = form.dataset.subject;
         status.textContent = form.dataset.sending;
         button.disabled = true;
@@ -595,6 +604,7 @@ const {
           if (!response.ok || !result.success) throw new Error(result.message);
           status.textContent = form.dataset.success;
           form.reset();
+          if (window.hcaptcha) window.hcaptcha.reset();
         } catch (error) {
           status.textContent = form.dataset.error;
         } finally {

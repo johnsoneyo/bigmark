@@ -63,7 +63,7 @@ export const translations = {
       impressum: 'Impressum',
       privacy: 'Datenschutz',
       privacyNotice:
-        'Ihre Angaben werden zur Bearbeitung Ihrer Anfrage über den Dienst Web3Forms übermittelt. Details in der',
+        'Ihre Angaben werden zur Bearbeitung Ihrer Anfrage über den Dienst Web3Forms übermittelt, zum Spam-Schutz kommt hCaptcha zum Einsatz. Details in der',
       privacyLink: 'Datenschutzerklärung',
       formSubject: 'Anfrage über BIG-MARK IT Consult',
     },
@@ -83,6 +83,7 @@ export const translations = {
       messagePlaceholder:
         'z. B. „Unterstützung im Plattform-Team beim Umzug von Jenkins nach GitHub Actions ab Q2“',
       submitLabel: 'Anfrage senden',
+      statusCaptcha: 'Bitte bestätigen Sie zuerst das Captcha.',
       statusSending: 'Wird gesendet…',
       statusSuccess: 'Danke, Ihre Nachricht ist angekommen. Wir melden uns bald.',
       statusError: 'Das hat leider nicht geklappt. Bitte schreiben Sie uns direkt an hello@big-mark.de.',
@@ -208,7 +209,7 @@ export const translations = {
       impressum: 'Impressum',
       privacy: 'Datenschutz',
       privacyNotice:
-        'Your details are sent via the Web3Forms service to process your request. More in our',
+        'Your details are sent via the Web3Forms service to process your request; hCaptcha is used for spam protection. More in our',
       privacyLink: 'privacy policy (German)',
       formSubject: 'Inquiry via BIG-MARK IT Consult',
     },
@@ -228,6 +229,7 @@ export const translations = {
       messagePlaceholder:
         'e.g. “Hands-on support for our platform team migrating Jenkins to GitHub Actions starting Q2”',
       submitLabel: 'Send Inquiry',
+      statusCaptcha: 'Please complete the captcha first.',
       statusSending: 'Sending…',
       statusSuccess: 'Thanks, your message has arrived. We’ll be in touch soon.',
       statusError: 'Something went wrong. Please email us directly at hello@big-mark.de.',
