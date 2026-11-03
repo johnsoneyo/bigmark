@@ -208,29 +208,6 @@ const visibleNavLinks = navLinks.filter(
       }
     });
 
-    const revealElements = Array.from(
-      document.querySelectorAll("[data-reveal]"),
-    );
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-      revealElements.forEach((element) => element.classList.add("is-visible"));
-    } else {
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          });
-        },
-        { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
-      );
-
-      revealElements.forEach((element) => revealObserver.observe(element));
-    }
   </script>
 
   <main
@@ -243,17 +220,13 @@ const visibleNavLinks = navLinks.filter(
     >
       <div class="relative z-10">
         <p
-          class="font-sans text-sm tracking-widest uppercase text-[#5B8DFF] mb-4 reveal-static"
-          data-reveal
-          style="--reveal-delay: 120ms"
+          class="font-sans text-sm tracking-widest uppercase text-[#5B8DFF] mb-4"
         >
           {hero.kicker}
         </p>
         <h1
           id="hero-title"
-          class="max-w-full text-4xl sm:text-5xl md:text-6xl !font-sans !font-semibold text-white mb-6 tracking-tight leading-[1.05] reveal-static"
-          data-reveal
-          style="--reveal-delay: 220ms"
+          class="max-w-full text-4xl sm:text-5xl md:text-6xl !font-sans !font-semibold text-white mb-6 tracking-tight leading-[1.05]"
         >
           {hero.title}
           <br />
@@ -263,16 +236,12 @@ const visibleNavLinks = navLinks.filter(
           >
         </h1>
         <p
-          class="text-lg md:text-xl text-gray-300 max-w-2xl font-sans mb-10 leading-relaxed reveal-static"
-          data-reveal
-          style="--reveal-delay: 340ms"
+          class="text-lg md:text-xl text-gray-300 max-w-2xl font-sans mb-10 leading-relaxed"
         >
           {hero.description}
         </p>
         <div
-          class="flex flex-wrap gap-4 font-sans group reveal-static"
-          data-reveal
-          style="--reveal-delay: 460ms"
+          class="flex flex-wrap gap-4 font-sans group"
         >
           <a
             href={hero.primaryCta.href}
@@ -301,8 +270,7 @@ const visibleNavLinks = navLinks.filter(
     >
       <div>
         <div
-          class="flex items-center gap-4 mb-12 reveal-heading"
-          data-reveal="left"
+          class="flex items-center gap-4 mb-12"
         >
           <h2
             id="services-title"
@@ -317,8 +285,6 @@ const visibleNavLinks = navLinks.filter(
             services.map((service, i) => (
               <article
                 class="service-grid-item p-8 lg:p-10 min-h-[18rem] transition-colors group reveal-lift hover:bg-[#161B22]/35"
-                data-reveal
-                style={`--reveal-delay: ${i * 90}ms`}
               >
                 <div class="mb-8 flex h-12 w-12 items-center justify-start">
                   <MaterialIcon
@@ -352,8 +318,7 @@ const visibleNavLinks = navLinks.filter(
     >
       <div>
         <div
-          class="flex items-center gap-4 mb-6 reveal-heading"
-          data-reveal="left"
+          class="flex items-center gap-4 mb-6"
         >
           <h2
             id="projects-title"
@@ -364,8 +329,7 @@ const visibleNavLinks = navLinks.filter(
           <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
         </div>
         <p
-          class="text-gray-300 font-sans mb-10 max-w-3xl reveal-static"
-          data-reveal="left"
+          class="text-gray-300 font-sans mb-10 max-w-3xl"
         >
           {sections.projects.intro}
         </p>
@@ -373,9 +337,7 @@ const visibleNavLinks = navLinks.filter(
           {
             projects.map((project, i) => (
               <article
-                class="border-l-2 border-gray-800 pl-6 py-2 hover:border-[#0B5CFF] transition-colors reveal-static"
-                data-reveal="left"
-                style={`--reveal-delay: ${Math.min(i, 3) * 110}ms`}
+                class="border-l-2 border-gray-800 pl-6 py-2 hover:border-[#0B5CFF] transition-colors"
               >
                 <p class="text-xs text-[#5B8DFF] font-sans mb-2 uppercase tracking-widest">
                   {project.category}
@@ -404,8 +366,7 @@ const visibleNavLinks = navLinks.filter(
 
     <section id="team" aria-labelledby="team-title" class="scroll-mt-32">
       <div
-        class="flex items-center gap-4 mb-12 reveal-heading"
-        data-reveal="left"
+        class="flex items-center gap-4 mb-12"
       >
         <h2 id="team-title" class="text-3xl text-white">
           {sections.team.heading}
@@ -416,9 +377,7 @@ const visibleNavLinks = navLinks.filter(
         {
           team.map((person, i) => (
             <article
-              class="flex gap-5 reveal-static"
-              data-reveal="left"
-              style={`--reveal-delay: ${i * 110}ms`}
+              class="flex gap-5"
             >
               {person.photo ? (
                 <img
@@ -462,8 +421,7 @@ const visibleNavLinks = navLinks.filter(
     >
       <div class="max-w-2xl">
         <div
-          class="flex items-center gap-4 mb-12 reveal-heading"
-          data-reveal="left"
+          class="flex items-center gap-4 mb-12"
         >
           <h2
             id="contact-title"
@@ -474,8 +432,7 @@ const visibleNavLinks = navLinks.filter(
           <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
         </div>
         <div
-          class="p-8 border border-gray-800 bg-[#161B22]/50 rounded-sm relative reveal-static"
-          data-reveal
+          class="p-8 border border-gray-800 bg-[#161B22]/50 rounded-sm relative"
         >
 
           <form

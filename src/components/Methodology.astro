@@ -9,7 +9,7 @@ const { sections, methodology } = Astro.props.data;
   aria-labelledby="methodology-title"
   class="scroll-mt-32"
 >
-  <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
+  <div class="flex items-center gap-4 mb-12">
     <h2 id="methodology-title" class="text-3xl text-white">
       {sections.methodology.heading}
     </h2>
@@ -21,8 +21,6 @@ const { sections, methodology } = Astro.props.data;
       methodology.map((step, i) => (
         <li
           class="p-5 border border-gray-800 bg-[#161B22]/50 flex flex-col items-start gap-4 hover:border-[#0B5CFF]/40 transition-colors relative overflow-hidden reveal-lift"
-          data-reveal
-          style={`--reveal-delay: ${i * 100}ms`}
         >
           <MaterialIcon
             name={step.icon}
