@@ -4,7 +4,7 @@ const toolstack = sections.toolstack;
 ---
 
 <section id="toolstack" aria-labelledby="toolstack-title" class="scroll-mt-32">
-  <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
+  <div class="flex items-center gap-4 mb-12">
     <h2 id="toolstack-title" class="text-3xl text-white">
       {toolstack.heading}
     </h2>
@@ -15,9 +15,7 @@ const toolstack = sections.toolstack;
     {
       toolCategories.map((cat, i) => (
         <article
-          class="group bg-[#0D1117] p-8 transition-colors hover:bg-[#10151D] reveal-static"
-          data-reveal="left"
-          style={`--reveal-delay: ${i * 90}ms`}
+          class="group bg-[#0D1117] p-8 transition-colors hover:bg-[#10151D]"
         >
           <p class="mb-6 font-mono text-xs tracking-widest text-[#5B8DFF]">
             {String(i + 1).padStart(2, "0")}

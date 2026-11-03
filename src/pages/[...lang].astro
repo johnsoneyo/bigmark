@@ -67,9 +67,6 @@ const defaultUrl = Astro.site
         <meta name="twitter:title" content={data.seo.title} />
         <meta name="twitter:description" content={data.seo.description} />
 
-        <script is:inline>
-            document.documentElement.classList.add("js");
-        </script>
         <script
             type="application/ld+json"
             set:html={JSON.stringify({

@@ -27,6 +27,8 @@ export const socialLinks = [
 // sending submissions to the registered inbox).
 export const web3formsAccessKey = '17753388-a6fc-472e-9b78-e4717b621ccf';
 
+type Project = { name: string; category: string; desc: string; tech: string[] };
+
 export const sharedJsonLd = {
   type: 'ProfessionalService',
   areaServed: 'DE',
@@ -70,6 +72,7 @@ export const translations = {
     navLinks: [
       { label: 'Leistungen', href: '#services' },
       { label: 'Vorgehen', href: '#methodology' },
+      { label: 'Projekte', href: '#projects' },
       { label: 'Team', href: '#team' },
       { label: 'Kontakt', href: '#contact' },
     ],
@@ -101,7 +104,10 @@ export const translations = {
       services: { heading: 'Was wir tun' },
       methodology: { heading: 'Unser Vorgehen' },
       toolstack: { heading: 'Technologie-Stack' },
-      projects: { heading: 'Beispielprojekte' },
+      projects: {
+        heading: 'Aus unserer Projekterfahrung',
+        intro: 'Eine Auswahl von Projekten, die wir in früheren Anstellungen und Kundeneinsätzen umgesetzt haben. Namen von Unternehmen nennen wir aus Vertraulichkeitsgründen nicht.',
+      },
       team: { heading: 'Team' },
       contact: { heading: 'Kontakt' },
     },
@@ -166,8 +172,45 @@ export const translations = {
         tools: ['Java', 'Spring Boot', 'Hibernate/JPA', 'PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch', 'RabbitMQ', 'Python'],
       },
     ],
-    // Project cards are hidden while this list is empty (see big-mark/projekte-entwurf.md).
-    projects: [] as { name: string; category: string; desc: string; tech: string[] }[],
+    // Anonymized project examples; rules in big-mark/projekte-entwurf.md (no company names, no amounts, percentages only).
+    projects: [
+      {
+        name: 'Java-EE-Modernisierung ohne Lizenzabhängigkeit',
+        category: 'Modernisierung',
+        desc: 'Modernisierung von vier Java-EE-Enterprise-Services (EJB, JPA, JMS, JSF, Servlets, JAX-RS) von einem kommerziellen Application Server auf Amazon Corretto 17, Spring Boot, Thymeleaf und Tomcat geleitet. Die Lizenzabhängigkeit entfiel, und die Rückmeldeschleifen in der Entwicklung wurden besser. Dazu Dynatrace, Spring Boot Admin, Actuator und JMX für die Beobachtbarkeit eingerichtet.',
+        tech: ['Java 17', 'Spring Boot', 'Thymeleaf', 'Tomcat', 'Dynatrace'],
+      },
+      {
+        name: 'Datenbank- und Kostenoptimierung',
+        category: 'Performance & Kosten',
+        desc: 'Datenmodell eines Scan-Dienstes überarbeitet: über 80 % weniger Speicherbedarf. Datenhaltung von MongoDB nach PostgreSQL migriert, mit eigenem Migrationsservice: Speicherbedarf rund 75 % kleiner, Antwortzeiten rund 70 % kürzer. Zusammen mit weiteren Maßnahmen sanken die monatlichen Cloud-Kosten um mehr als die Hälfte.',
+        tech: ['PostgreSQL', 'MongoDB', 'Java', 'Spring Boot', 'Redis'],
+      },
+      {
+        name: 'Von der VM in den Cluster',
+        category: 'Containerisierung',
+        desc: 'Ältere Spring-Anwendungen von XML- auf Java-Konfiguration modernisiert und VM-basierte, per systemd betriebene Services für den Container-Betrieb auf GKE vorbereitet. Dockerfiles, Kubernetes-Manifeste, Helm-Charts und CI/CD-Pipelines für automatisierte Image-Builds und GKE-Deployments gebaut, dazu Observability für die Fehlersuche in Produktion ergänzt.',
+        tech: ['Spring', 'Docker', 'Kubernetes', 'Helm', 'GKE'],
+      },
+      {
+        name: 'Kubernetes-Integration für EKS, AKS, GKE und OpenShift',
+        category: 'Produktentwicklung',
+        desc: 'Neues Produkt für Kubernetes Security Posture Management konzipiert, entwickelt und eingeführt, nach dem Start von Bestandskunden aktiv genutzt. Dazu einen In-Cluster-Agenten samt Helm-Chart für EKS, AKS, GKE und OpenShift integriert, inklusive Proxy-Unterstützung für abgeschottete Unternehmensnetze.',
+        tech: ['Java', 'Spring Boot', 'Kubernetes', 'Helm'],
+      },
+      {
+        name: 'KI-Assistent für die Störungsanalyse',
+        category: 'KI & Tooling',
+        desc: 'Java-basierten Assistenten auf Basis des Model Context Protocol (MCP) gebaut, der Logs, Datenbankzugriff und Diagnosewerkzeuge für die Untersuchung von Störungen zusammenführt.',
+        tech: ['Java', 'MCP'],
+      },
+      {
+        name: 'CI/CD-Migration',
+        category: 'DevOps',
+        desc: 'Umstellung der Build- und Deployment-Pipelines von Jenkins auf GitHub Actions geleitet. Ergebnis: weniger Pflegeaufwand und eine einheitliche, automatisierte Auslieferung.',
+        tech: ['GitHub Actions', 'Jenkins', 'Docker'],
+      },
+    ] satisfies Project[],
     team: [
       {
         name: 'Johnson Eyo',
@@ -216,6 +259,7 @@ export const translations = {
     navLinks: [
       { label: 'Services', href: '#services' },
       { label: 'Approach', href: '#methodology' },
+      { label: 'Projects', href: '#projects' },
       { label: 'Team', href: '#team' },
       { label: 'Contact', href: '#contact' },
     ],
@@ -247,7 +291,10 @@ export const translations = {
       services: { heading: 'What We Do' },
       methodology: { heading: 'Our Approach' },
       toolstack: { heading: 'Technology Stack' },
-      projects: { heading: 'Example Projects' },
+      projects: {
+        heading: 'From Our Project Experience',
+        intro: 'A selection of projects we delivered in previous roles and client engagements. We don\'t name companies, for confidentiality reasons.',
+      },
       team: { heading: 'Team' },
       contact: { heading: 'Contact' },
     },
@@ -312,8 +359,45 @@ export const translations = {
         tools: ['Java', 'Spring Boot', 'Hibernate/JPA', 'PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch', 'RabbitMQ', 'Python'],
       },
     ],
-    // Project cards are hidden while this list is empty (see big-mark/projekte-entwurf.md).
-    projects: [] as { name: string; category: string; desc: string; tech: string[] }[],
+    // Anonymized project examples; rules in big-mark/projekte-entwurf.md (no company names, no amounts, percentages only).
+    projects: [
+      {
+        name: 'Java EE modernization without license lock-in',
+        category: 'Modernization',
+        desc: 'Led the modernization of four Java EE enterprise services (EJB, JPA, JMS, JSF, Servlets, JAX-RS) from a commercial application server to Amazon Corretto 17, Spring Boot, Thymeleaf and Tomcat. This removed the license dependency and improved development feedback loops. Also set up Dynatrace, Spring Boot Admin, Actuator and JMX for observability.',
+        tech: ['Java 17', 'Spring Boot', 'Thymeleaf', 'Tomcat', 'Dynatrace'],
+      },
+      {
+        name: 'Database and cost optimization',
+        category: 'Performance & cost',
+        desc: 'Reworked the data model of a scanning service, cutting storage by over 80%. Migrated the data store from MongoDB to PostgreSQL with a dedicated migration service: about 75% less storage and about 70% faster response times. Together with other measures, monthly cloud costs fell by more than half.',
+        tech: ['PostgreSQL', 'MongoDB', 'Java', 'Spring Boot', 'Redis'],
+      },
+      {
+        name: 'From VM to cluster',
+        category: 'Containerization',
+        desc: 'Modernized legacy Spring applications from XML-based to Java-based configuration and prepared VM-hosted, systemd-managed services for containerized deployment on GKE. Built Dockerfiles, Kubernetes manifests, Helm charts and CI/CD pipelines for automated image builds and GKE deployments, and added observability for troubleshooting in production.',
+        tech: ['Spring', 'Docker', 'Kubernetes', 'Helm', 'GKE'],
+      },
+      {
+        name: 'Kubernetes integration for EKS, AKS, GKE and OpenShift',
+        category: 'Product development',
+        desc: 'Designed, built and launched a new product for Kubernetes security posture management, actively used by existing customers after launch. Integrated an in-cluster agent with a Helm chart for EKS, AKS, GKE and OpenShift, including proxy support for locked-down enterprise networks.',
+        tech: ['Java', 'Spring Boot', 'Kubernetes', 'Helm'],
+      },
+      {
+        name: 'AI assistant for incident analysis',
+        category: 'AI & tooling',
+        desc: 'Built a Java assistant based on the Model Context Protocol (MCP) that integrates logs, database access and diagnostic tools for incident investigation.',
+        tech: ['Java', 'MCP'],
+      },
+      {
+        name: 'CI/CD migration',
+        category: 'DevOps',
+        desc: 'Led the move of build and deployment pipelines from Jenkins to GitHub Actions. The result is less maintenance effort and consistent, automated delivery.',
+        tech: ['GitHub Actions', 'Jenkins', 'Docker'],
+      },
+    ] satisfies Project[],
     team: [
       {
         name: 'Johnson Eyo',
