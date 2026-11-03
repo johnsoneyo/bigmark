@@ -19,6 +19,9 @@ const {
   alternateLabel,
   ui,
 } = Astro.props.data;
+const visibleNavLinks = navLinks.filter(
+  (item) => item.href !== '#projects' || projects.length > 0,
+);
 ---
 
 <div
@@ -52,7 +55,7 @@ const {
         class="hidden md:flex gap-8 font-sans text-sm"
       >
         {
-          navLinks.map((item) => (
+          visibleNavLinks.map((item) => (
             <a
               href={item.href}
               class="text-gray-300 hover:text-white transition-colors"
@@ -124,7 +127,7 @@ const {
     <div class="mx-auto flex h-full max-w-7xl flex-col justify-between">
       <div class="flex flex-col gap-3">
         {
-          navLinks.map((item) => (
+          visibleNavLinks.map((item) => (
             <a
               href={item.href}
               class="border-b border-gray-900 py-3 text-gray-300 hover:text-[#5B8DFF] transition-colors"
@@ -349,7 +352,7 @@ const {
     >
       <div>
         <div
-          class="flex items-center gap-4 mb-12 reveal-heading"
+          class="flex items-center gap-4 mb-6 reveal-heading"
           data-reveal="left"
         >
           <h2
@@ -360,13 +363,19 @@ const {
           </h2>
           <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
         </div>
+        <p
+          class="text-gray-300 font-sans mb-10 max-w-3xl reveal-static"
+          data-reveal="left"
+        >
+          {sections.projects.intro}
+        </p>
         <div class="space-y-8">
           {
             projects.map((project, i) => (
               <article
                 class="border-l-2 border-gray-800 pl-6 py-2 hover:border-[#0B5CFF] transition-colors reveal-static"
                 data-reveal="left"
-                style={`--reveal-delay: ${i * 110}ms`}
+                style={`--reveal-delay: ${Math.min(i, 3) * 110}ms`}
               >
                 <p class="text-xs text-[#5B8DFF] font-sans mb-2 uppercase tracking-widest">
                   {project.category}
@@ -377,7 +386,7 @@ const {
                 <p class="text-gray-300 font-sans mb-4 max-w-3xl">
                   {project.desc}
                 </p>
-                <div class="flex gap-3 font-sans text-xs text-gray-300">
+                <div class="flex flex-wrap gap-3 font-sans text-xs text-gray-300">
                   {project.tech.map((t) => (
                     <span class="px-2 py-1 bg-gray-800/50 border border-gray-700/50 rounded">
                       {t}
