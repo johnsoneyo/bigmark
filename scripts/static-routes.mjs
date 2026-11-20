@@ -12,8 +12,8 @@ for (const route of routes) {
   await copyFile('dist/index.html', target);
 }
 const routeMeta = {
-  '': ['de', 'Java- und Cloud-Engineering für Unternehmen in Europa', 'Big Mark IT Consult unterstützt Unternehmen mit Java, Spring Boot, Cloud Engineering und Modernisierung.', '', 'en'],
-  'en': ['en', 'Senior Java & Cloud Engineering for European Businesses', 'Big Mark IT Consult helps European teams with Java, Spring Boot, cloud engineering and modernization.', '', 'en'],
+  '': ['de', 'Java- und Cloud-Engineering für Unternehmen weltweit', 'Big Mark IT Consult unterstützt Unternehmen weltweit mit Java, Spring Boot, Cloud Engineering und Modernisierung.', '', 'en'],
+  'en': ['en', 'Senior Java & Cloud Engineering for Global Businesses', 'Big Mark IT Consult helps teams worldwide with Java, Spring Boot, cloud engineering and modernization.', '', 'en'],
   'leistungen': ['de', 'Leistungen', 'Java, Modernisierung, Cloud-Native Engineering, Architektur und Production Support.', 'leistungen', 'en/services'],
   'en/services': ['en', 'Services', 'Java, modernization, cloud-native engineering, architecture and production support.', 'leistungen', 'en/services'],
   'projekte': ['de', 'Projekterfahrung', 'Ausgewählte Projekterfahrung von Big Mark IT Consult.', 'projekte', 'en/projects'],

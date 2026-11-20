@@ -22,7 +22,7 @@ const projects = {
 export const content = {
   de: {
     nav: { services: 'Leistungen', projects: 'Projekte', about: 'Über uns', engagement: 'Zusammenarbeit', contact: 'Kontakt' },
-    hero: { eyebrow: 'Unabhängige B2B-Engineering-Beratung · Deutschland', title: 'Java- und Cloud-Engineering für Unternehmen in Europa', text: 'Big Mark IT Consult unterstützt Entwicklungsteams bei der Modernisierung von Java-Unternehmensanwendungen, dem Aufbau zuverlässiger Backend-Systeme und der Umsetzung cloudnativer Lösungen.', primary: 'Projekt besprechen', secondary: 'Leistungen entdecken' },
+    hero: { eyebrow: 'Unabhängige B2B-Engineering-Beratung · Deutschland · Weltweit verfügbar', title: 'Java- und Cloud-Engineering für Unternehmen weltweit', text: 'Big Mark IT Consult unterstützt Entwicklungsteams weltweit bei der Modernisierung von Java-Unternehmensanwendungen, dem Aufbau zuverlässiger Backend-Systeme und der Umsetzung cloudnativer Lösungen.', primary: 'Projekt besprechen', secondary: 'Leistungen entdecken' },
     servicesTitle: 'Engineering für geschäftskritische Systeme', services: [
       ['Enterprise Java & Spring Boot Engineering', 'Wenn Backend-Systeme zuverlässig skalieren und sich sauber integrieren müssen.', 'Moderne Java- und Spring-Boot-Services, REST APIs, Kafka, Microservices und Enterprise-Integrationen.'],
       ['Legacy-Java-Modernisierung', 'Wenn Java EE, Monolithen oder technische Schulden die Delivery verlangsamen.', 'Schrittweise Migration, Refactoring und technische Erneuerung ohne unnötigen Big Bang.'],
@@ -39,7 +39,7 @@ export const content = {
   },
   en: {
     nav: { services: 'Services', projects: 'Projects', about: 'About', engagement: 'Engagement', contact: 'Contact' },
-    hero: { eyebrow: 'Independent B2B engineering consultancy · Germany', title: 'Senior Java & Cloud Engineering for European Businesses', text: 'Big Mark IT Consult helps engineering teams build reliable Java backend systems, modernize enterprise applications, and deliver cloud-native solutions through flexible B2B engagements.', primary: 'Discuss Your Project', secondary: 'Explore Our Services' },
+    hero: { eyebrow: 'Independent B2B engineering consultancy · Germany · Available worldwide', title: 'Senior Java & Cloud Engineering for Global Businesses', text: 'Big Mark IT Consult helps engineering teams worldwide build reliable Java backend systems, modernize enterprise applications, and deliver cloud-native solutions through flexible B2B engagements.', primary: 'Discuss Your Project', secondary: 'Explore Our Services' },
     servicesTitle: 'Engineering for business-critical systems', services: [
       ['Enterprise Java & Spring Boot Engineering', 'When backend systems must scale reliably and integrate cleanly.', 'Modern Java and Spring Boot services, REST APIs, Kafka, microservices and enterprise integrations.'],
       ['Legacy Java Modernization', 'When Java EE, monoliths or technical debt slow delivery.', 'Incremental migration, refactoring and technical renewal without an unnecessary big bang.'],

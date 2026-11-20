@@ -25,7 +25,11 @@ function Meta({ locale, title, description }: { locale: Locale; title: string; d
     setLink('alternate', `https://big-mark.de${dePath}`, 'de'); setLink('alternate', `https://big-mark.de${enPath}`, 'en'); setLink('alternate', 'https://big-mark.de/', 'x-default');
     let structured = document.querySelector<HTMLScriptElement>('script[data-organization-schema]');
     if (!structured) { structured = document.createElement('script'); structured.type = 'application/ld+json'; structured.dataset.organizationSchema = ''; document.head.append(structured); }
-    structured.text = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'BIG-MARK IT Consult', url: 'https://big-mark.de', email: 'john@big-mark.de', areaServed: 'Europe', founder: { '@type': 'Person', name: 'Johnson Eyo' }, serviceType: ['Java Engineering', 'Cloud Engineering', 'Software Architecture', 'Application Modernization'] });
+    structured.text = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'BIG-MARK IT Consult', url: 'https://big-mark.de', email: 'john@big-mark.de', areaServed: 'Worldwide', founder: { '@type': 'Person', name: 'Johnson Eyo' }, serviceType: ['Java Engineering', 'Cloud Engineering', 'Software Architecture', 'Application Modernization'] });
+    document.querySelectorAll('p').forEach((element) => {
+      if (element.textContent === 'Germany · Remote-first Europe') element.textContent = 'Germany · Remote-first worldwide';
+      if (element.textContent?.includes('REMOTE-FIRST EUROPE')) element.textContent = element.textContent.replace('REMOTE-FIRST EUROPE', 'REMOTE-FIRST WORLDWIDE');
+    });
   }, [locale, title, description, pathname]);
   return null;
 }
