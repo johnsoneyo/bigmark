@@ -1,6 +1,6 @@
 # BIG-MARK IT Consult – Website
 
-Static site built with [Astro](https://astro.build) and Tailwind CSS 4. German is the default language (`/`), English lives at `/en/`. Legal pages: `/impressum/`, `/datenschutz/`.
+Static bilingual site built with React, TypeScript, Vite and Tailwind CSS 4. German is the default language (`/`), English lives at `/en/`. Legal pages: `/impressum/`, `/datenschutz/`.
 
 ## Development
 
@@ -15,7 +15,7 @@ npm run lint     # type check
 
 ## Content
 
-All texts, navigation, team and SEO data are in `src/config/site.ts` (one block per language). Project cards are hidden while `projects` is empty. The contact form posts to Web3Forms; the access key is also in `site.ts`.
+Localized business content is maintained in `src/content.ts`. React routes and shared page components live in `src/react/App.tsx`. The contact form posts to Web3Forms.
 
 ## Deployment
 
@@ -23,4 +23,4 @@ Pushes to `main` build the site and publish `dist/` to the `gh-pages` branch (se
 
 ## Origin and license
 
-Started from the MIT-licensed NULLTRACE Astro theme; see [LICENSE](LICENSE).
+Started from the MIT-licensed NULLTRACE theme; see [LICENSE](LICENSE).
