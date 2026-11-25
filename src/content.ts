@@ -2,63 +2,59 @@ export type Locale = 'de' | 'en';
 
 const projects = {
   de: [
-    { category: 'Modernisierung', title: 'Java-EE-Modernisierung ohne Lizenzabhängigkeit', text: 'Vier Java-EE-Enterprise-Services wurden von einem kommerziellen Application Server auf Amazon Corretto 17, Spring Boot, Thymeleaf und Tomcat modernisiert. Dynatrace, Spring Boot Admin, Actuator und JMX verbesserten die Beobachtbarkeit.', tech: ['Java 17', 'Spring Boot', 'Tomcat', 'Dynatrace'] },
-    { category: 'Performance & Kosten', title: 'Datenbank- und Kostenoptimierung', text: 'Das Datenmodell eines Scan-Dienstes wurde überarbeitet und die Datenhaltung mit einem eigenen Migrationsservice von MongoDB nach PostgreSQL migriert: über 80 % weniger Speicherbedarf und deutlich kürzere Antwortzeiten.', tech: ['PostgreSQL', 'MongoDB', 'Java', 'Redis'] },
-    { category: 'Containerisierung', title: 'Von der VM in den Cluster', text: 'Ältere Spring-Anwendungen wurden modernisiert und mit Docker, Kubernetes, Helm, CI/CD und Observability für den produktiven Betrieb auf GKE vorbereitet.', tech: ['Spring', 'Docker', 'Kubernetes', 'GKE'] },
-    { category: 'Produktentwicklung', title: 'Kubernetes-Integration für EKS, AKS, GKE und OpenShift', text: 'Ein In-Cluster-Agent samt Helm-Chart und Proxy-Unterstützung für abgeschottete Unternehmensnetze wurde für mehrere Kubernetes-Plattformen entwickelt.', tech: ['Java', 'Spring Boot', 'Kubernetes', 'Helm'] },
-    { category: 'KI & Tooling', title: 'KI-Assistent für die Störungsanalyse', text: 'Ein Java-Assistent auf Basis des Model Context Protocol verbindet Logs, Datenbankzugriff und Diagnosewerkzeuge für die Untersuchung von Störungen.', tech: ['Java', 'MCP'] },
-    { category: 'DevOps', title: 'CI/CD-Migration', text: 'Build- und Deployment-Pipelines wurden von Jenkins auf GitHub Actions umgestellt und die automatisierte Auslieferung vereinheitlicht.', tech: ['GitHub Actions', 'Jenkins', 'Docker'] },
+    { category: 'Entwurf · Inhaberprüfung', title: 'Enterprise Java Application Engineering', text: 'Vorlage für verifizierte Angaben zu Geschäftskontext, technischer Herausforderung, Engineering-Ansatz, Verantwortlichkeiten und Ergebnissen.', tech: ['Java', 'Spring Boot', 'REST APIs'] },
+    { category: 'Entwurf · Inhaberprüfung', title: 'Kafka & Event-Driven Systems', text: 'Unveröffentlichte Vorlage. Projektdetails und Ergebnisse werden erst nach Prüfung ergänzt.', tech: ['Apache Kafka', 'Microservices'] },
+    { category: 'Entwurf · Inhaberprüfung', title: 'Anwendungsmodernisierung', text: 'Vorlage zur klaren Trennung früherer Berufserfahrung von direkt durch Big Mark IT Consult beauftragten Projekten.', tech: ['Legacy Modernization', 'Software Architecture'] },
   ],
   en: [
-    { category: 'Modernization', title: 'Java EE modernization without license lock-in', text: 'Four Java EE enterprise services were modernized from a commercial application server to Amazon Corretto 17, Spring Boot, Thymeleaf and Tomcat. Dynatrace, Spring Boot Admin, Actuator and JMX improved observability.', tech: ['Java 17', 'Spring Boot', 'Tomcat', 'Dynatrace'] },
-    { category: 'Performance & cost', title: 'Database and cost optimization', text: 'A scanning service data model was redesigned and migrated from MongoDB to PostgreSQL with a dedicated migration service, cutting storage by over 80% and improving response times.', tech: ['PostgreSQL', 'MongoDB', 'Java', 'Redis'] },
-    { category: 'Containerization', title: 'From VM to cluster', text: 'Legacy Spring applications were modernized and prepared for production on GKE using Docker, Kubernetes, Helm, CI/CD and observability.', tech: ['Spring', 'Docker', 'Kubernetes', 'GKE'] },
-    { category: 'Product development', title: 'Kubernetes integration for EKS, AKS, GKE and OpenShift', text: 'An in-cluster agent and Helm chart with proxy support for locked-down enterprise networks was built across multiple Kubernetes platforms.', tech: ['Java', 'Spring Boot', 'Kubernetes', 'Helm'] },
-    { category: 'AI & tooling', title: 'AI assistant for incident analysis', text: 'A Java assistant based on the Model Context Protocol connects logs, database access and diagnostic tools for incident investigation.', tech: ['Java', 'MCP'] },
-    { category: 'DevOps', title: 'CI/CD migration', text: 'Build and deployment pipelines were migrated from Jenkins to GitHub Actions, standardizing automated delivery.', tech: ['GitHub Actions', 'Jenkins', 'Docker'] },
+    { category: 'Draft · Owner review', title: 'Enterprise Java Application Engineering', text: 'Template for verified business context, technical challenge, engineering approach, responsibilities and outcomes.', tech: ['Java', 'Spring Boot', 'REST APIs'] },
+    { category: 'Draft · Owner review', title: 'Kafka & Event-Driven Systems', text: 'Unpublished template. Project details and outcomes will be added only after verification.', tech: ['Apache Kafka', 'Microservices'] },
+    { category: 'Draft · Owner review', title: 'Legacy Application Modernization', text: 'Template designed to distinguish previous professional experience from projects contracted directly by Big Mark IT Consult.', tech: ['Legacy Modernization', 'Software Architecture'] },
   ],
 };
 
 export const content = {
   de: {
-    nav: { services: 'Leistungen', projects: 'Projekte', about: 'Über uns', engagement: 'Zusammenarbeit', contact: 'Kontakt' },
-    hero: { eyebrow: 'Unabhängige B2B-Engineering-Beratung', title: 'Java- und Cloud-Engineering für moderne Unternehmen', text: 'Big Mark IT Consult unterstützt Entwicklungsteams bei der Modernisierung von Java-Unternehmensanwendungen, dem Aufbau zuverlässiger Backend-Systeme und der Umsetzung cloudnativer Lösungen.', primary: 'Projekt besprechen', secondary: 'Leistungen entdecken' },
-    servicesTitle: 'Engineering für geschäftskritische Systeme', services: [
-      ['Enterprise Java & Spring Boot Engineering', 'Wenn Backend-Systeme zuverlässig skalieren und sich sauber integrieren müssen.', 'Moderne Java- und Spring-Boot-Services, REST APIs, Kafka, Microservices und Enterprise-Integrationen.'],
-      ['Legacy-Java-Modernisierung', 'Wenn Java EE, Monolithen oder technische Schulden die Delivery verlangsamen.', 'Schrittweise Migration, Refactoring und technische Erneuerung ohne unnötigen Big Bang.'],
-      ['Cloud-Native Engineering', 'Wenn Deployments reproduzierbar, sicher und plattformfähig werden müssen.', 'AWS, Azure, GCP, Kubernetes, Docker, Helm, Terraform, CI/CD und GitOps.'],
-      ['Softwarearchitektur & Integration', 'Wenn verteilte Systeme über Team- und Plattformgrenzen hinweg funktionieren müssen.', 'Architektur-Reviews, Event-Driven Design, REST-Integration und Troubleshooting.'],
-      ['Production Engineering & Support', 'Wenn produktive Systeme instabil, langsam oder schwer zu diagnostizieren sind.', 'L3-Support, Root-Cause-Analyse, Performance-Diagnostik und Observability.'],
+    nav: { services: 'Leistungen', partnerships: 'Partnerschaften', projects: 'Engineering-Erfahrung', about: 'Über uns', engagement: 'Zusammenarbeit', contact: 'Kontakt' },
+    hero: { eyebrow: 'Ihr unabhängiger B2B-Engineering-Partner', title: 'Enterprise-Softwareentwicklung & IT-Beratung', text: 'Big Mark IT Consult ist ein in Deutschland ansässiges Unternehmen für Softwareentwicklung und IT-Beratung. Wir unterstützen Unternehmen, Beratungshäuser und IT-Dienstleister beim Aufbau, bei der Modernisierung und beim Betrieb zuverlässiger Softwaresysteme – remote-first und mit Fokus auf langfristige technologische Partnerschaften.', primary: 'Partnerschaft besprechen', secondary: 'Unsere Leistungen entdecken' },
+    servicesTitle: 'Spezialisierte Engineering-Leistungen', services: [
+      ['Enterprise-Softwareentwicklung', 'Zuverlässige Enterprise-Anwendungen, Backend-Services und APIs.', 'Java, Spring Boot, Rust, REST APIs, Softwarearchitektur und Backend Engineering.'],
+      ['Verteilte Systeme & Event-Driven Architecture', 'Skalierbare und resiliente verteilte Anwendungen.', 'Apache Kafka, Microservices, asynchrone Verarbeitung und Systemintegration.'],
+      ['Cloud-native Softwareentwicklung', 'Moderne Anwendungen entwickeln, bereitstellen und betreiben.', 'Kubernetes, Docker, CI/CD, Observability und Infrastrukturintegration.'],
+      ['Anwendungsmodernisierung', 'Bestehende Systeme verbessern, ohne den Geschäftsbetrieb unnötig zu stören.', 'Legacy-Java-Modernisierung, Migration, Architekturverbesserung und technische Schulden.'],
+      ['Production Engineering & Application Support', 'Betriebsstabilität geschäftskritischer Anwendungen.', 'L3-Support, Ursachenanalyse, Troubleshooting, Monitoring und Performanceoptimierung.'],
+      ['B2B-Engineering-Partnerschaften', 'Spezialisierte externe Expertise für bestehende Delivery-Teams.', 'B2B-Subcontracting, Projektunterstützung und langfristige Zusammenarbeit.'],
     ],
     challengesTitle: 'Technische Herausforderungen, die wir lösen', challenges: ['Legacy-Systeme sicher modernisieren', 'Java-Plattformen für Cloud und Container vorbereiten', 'Produktionsprobleme strukturiert analysieren', 'Delivery-Pipelines vereinheitlichen', 'Architekturentscheidungen belastbar machen'],
-    projectsTitle: 'Modernisierung mit nachweisbarer Wirkung', projectsIntro: 'Ausgewählte, anonymisierte Projekterfahrung aus früheren Rollen und Kundeneinsätzen.',
-    whyTitle: 'Erfahrene Engineers, direkt in Ihrem Team', whyText: 'Keine generische Agenturstruktur: Big Mark arbeitet hands-on in Repositories, Architekturgesprächen und Produktionssystemen – remote-first und mit klarer Verantwortung.',
-    engagementTitle: 'Von der Klärung bis zum Wissenstransfer', steps: ['Technisches Erstgespräch', 'Scope-Assessment', 'B2B-Vereinbarung', 'Engineering Delivery', 'Dokumentation & Wissenstransfer'],
+    projectsTitle: 'Engineering-Erfahrung', projectsIntro: 'Unveröffentlichte Vorlagen für verifizierte Projekterfahrung. Es werden keine Kunden, Ergebnisse oder Kennzahlen erfunden.',
+    whyTitle: 'Technologiekompetenz nach Engineering-Domäne', whyText: 'Direkte technische Expertise, transparente Kommunikation und ein Fokus auf wartbare, zuverlässige Software.',
+    engagementTitle: 'Flexibles B2B-Zusammenarbeitsmodell', steps: ['Anforderungen besprechen', 'Zusammenarbeit qualifizieren', 'B2B-Vereinbarung', 'Remote-first Delivery', 'Langfristige Partnerschaft'],
     teamTitle: 'Über Big Mark IT Consult', contactTitle: 'Lassen Sie uns über Ihr Projekt sprechen', form: { email: 'Geschäftliche E-Mail', message: 'Worum geht es?', send: 'Anfrage senden', success: 'Danke. Ihre Anfrage ist angekommen.', error: 'Die Anfrage konnte nicht gesendet werden. Schreiben Sie bitte an john@big-mark.de.' },
     projects: projects.de,
   },
   en: {
-    nav: { services: 'Services', projects: 'Projects', about: 'About', engagement: 'Engagement', contact: 'Contact' },
-    hero: { eyebrow: 'Independent B2B Engineering Consultancy', title: 'Senior Java & Cloud Engineering for Modern Businesses', text: 'Big Mark IT Consult helps engineering teams build reliable Java backend systems, modernize enterprise applications, and deliver cloud-native solutions through flexible B2B engagements.', primary: 'Discuss Your Project', secondary: 'Explore Our Services' },
-    servicesTitle: 'Engineering for business-critical systems', services: [
-      ['Enterprise Java & Spring Boot Engineering', 'When backend systems must scale reliably and integrate cleanly.', 'Modern Java and Spring Boot services, REST APIs, Kafka, microservices and enterprise integrations.'],
-      ['Legacy Java Modernization', 'When Java EE, monoliths or technical debt slow delivery.', 'Incremental migration, refactoring and technical renewal without an unnecessary big bang.'],
-      ['Cloud-Native Engineering', 'When delivery must become repeatable, secure and platform-ready.', 'AWS, Azure, GCP, Kubernetes, Docker, Helm, Terraform, CI/CD and GitOps.'],
-      ['Software Architecture & Integration', 'When distributed systems must work across team and platform boundaries.', 'Architecture reviews, event-driven design, REST integration and troubleshooting.'],
-      ['Production Engineering & Support', 'When production systems are unstable, slow or hard to diagnose.', 'L3 support, root-cause analysis, performance diagnostics and observability.'],
+    nav: { services: 'Services', partnerships: 'Partnerships', projects: 'Engineering Experience', about: 'About', engagement: 'Engagement', contact: 'Contact' },
+    hero: { eyebrow: 'Your Independent B2B Engineering Partner', title: 'Enterprise Software Engineering & IT Consulting', text: 'Big Mark IT Consult is a Germany-based software engineering and IT consulting company helping enterprises, consulting companies and technology service providers build, modernize and operate reliable software systems through remote-first, flexible B2B engagements.', primary: 'Discuss a Partnership', secondary: 'Explore Our Services' },
+    servicesTitle: 'Specialist engineering services', services: [
+      ['Enterprise Software Engineering', 'Reliable enterprise applications, backend services and APIs.', 'Java, Spring Boot, Rust, REST APIs, software architecture and backend engineering.'],
+      ['Distributed Systems & Event-Driven Architecture', 'Scalable, resilient distributed applications.', 'Apache Kafka, microservices, asynchronous processing and system integration.'],
+      ['Cloud-Native Engineering', 'Develop, deploy and operate modern applications.', 'Kubernetes, Docker, CI/CD, observability and infrastructure integration.'],
+      ['Legacy Application Modernization', 'Improve existing systems without unnecessarily disrupting operations.', 'Legacy Java modernization, migration, architectural improvement and technical-debt reduction.'],
+      ['Production Engineering & Application Support', 'Operational stability for business-critical applications.', 'L3 support, root-cause analysis, troubleshooting, monitoring and performance optimization.'],
+      ['B2B Engineering Partnerships', 'Specialist external expertise for established delivery teams.', 'B2B subcontracting, project support and long-term collaboration.'],
     ],
     challengesTitle: 'Engineering challenges we address', challenges: ['Modernize legacy systems safely', 'Prepare Java platforms for cloud and containers', 'Investigate production incidents systematically', 'Standardize delivery pipelines', 'Make architecture decisions defensible'],
-    projectsTitle: 'Modernization experience with evidence', projectsIntro: 'Selected anonymized project experience from previous roles and client engagements.',
-    whyTitle: 'Experienced engineers, directly in your team', whyText: 'No generic agency layers: Big Mark works hands-on in repositories, architecture discussions and production systems—remote-first with clear ownership.',
-    engagementTitle: 'A clear path from discussion to delivery', steps: ['Technical discussion', 'Scope assessment', 'B2B agreement', 'Engineering delivery', 'Documentation & knowledge transfer'],
+    projectsTitle: 'Engineering Experience', projectsIntro: 'Unpublished templates for verified experience. No clients, outcomes or performance figures are invented.',
+    whyTitle: 'Technology expertise by engineering domain', whyText: 'Direct technical expertise, transparent communication and a focus on maintainable, reliable software.',
+    engagementTitle: 'Flexible B2B collaboration', steps: ['Discuss requirements', 'Qualify the engagement', 'B2B agreement', 'Remote-first delivery', 'Long-term partnership'],
     teamTitle: 'About Big Mark IT Consult', contactTitle: "Let's discuss your engineering needs", form: { email: 'Business email', message: 'What do you need help with?', send: 'Send inquiry', success: 'Thank you. Your inquiry has arrived.', error: 'The inquiry could not be sent. Please email john@big-mark.de.' },
     projects: projects.en,
   },
 } as const;
 
 export const team = [
-  { name: 'Johnson Eyo', role: 'Founder & Principal Cloud Engineer', photo: '/team/john.webp', de: 'Seit 2014 in der Java-Entwicklung, zuletzt als Senior Java Architect. Verteilte Spring-Boot-Services, Kubernetes, CI/CD und internationale Integrationen.', en: 'Working in Java engineering since 2014, most recently as a Senior Java Architect. Distributed Spring Boot services, Kubernetes, CI/CD and international integrations.' },
-  { name: 'Michael Keller', role: 'Backend & DevOps Engineer', de: 'Über fünf Jahre Erfahrung mit AWS, Azure, GCP, Terraform, Kubernetes und Java/Spring sowie produktiven CI/CD-Pipelines.', en: 'Over five years of experience with AWS, Azure, GCP, Terraform, Kubernetes and Java/Spring, including production CI/CD pipelines.' },
+  { name: 'Johnson Eyo', role: 'Founder & Principal Engineer', photo: '/team/john.webp', de: 'Mehr als 11 Jahre Berufserfahrung in Enterprise-Softwareentwicklung, verteilten Systemen, Anwendungsmodernisierung, cloudnativen Technologien und Production Support.', en: 'More than 11 years of professional experience in enterprise software development, distributed systems, application modernization, cloud-native technologies and production support.' },
+  { name: 'Michael Keller', role: 'Backend & DevOps Engineer', de: 'Engineering-Unterstützung für Backend-Systeme, Cloud-Infrastruktur, Kubernetes, Java/Spring und CI/CD.', en: 'Engineering support for backend systems, cloud infrastructure, Kubernetes, Java/Spring and CI/CD.' },
 ];
 
-export const technologies = ['Java 17+', 'Spring Boot', 'Spring Cloud', 'Kafka', 'REST APIs', 'Kubernetes', 'Docker', 'Helm', 'Terraform', 'AWS', 'Azure', 'Google Cloud', 'GitHub Actions', 'Jenkins', 'OpenTelemetry', 'PostgreSQL'];
+export const technologies = ['Java', 'Spring Boot', 'Rust', 'Apache Kafka', 'Microservices', 'Event-Driven Architecture', 'REST APIs', 'Kubernetes', 'Docker', 'CI/CD', 'Software Architecture', 'Legacy Modernization', 'Observability', 'L3 Support'];

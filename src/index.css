@@ -20,4 +20,20 @@ button:not(:disabled) { cursor: pointer; }
 .legal-prose h1 { margin-bottom: 3rem; color: white; font-size: clamp(2.7rem, 7vw, 5rem); font-weight: 600; letter-spacing: -.05em; }
 .legal-prose h2 { margin-top: 2.5rem; margin-bottom: .75rem; color: white; font-size: 1.25rem; font-weight: 600; }
 .legal-prose p { line-height: 1.8; color: #c8d4e8; }
+
+/* Replace the former hero logo tile with a lightweight cloud-engineering diagram. */
+.relative:has(> img[src="/big-mark-logo.png"]) {
+  width: 25rem;
+  height: 25rem;
+  padding: 0;
+  transform: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 480' fill='none'%3E%3Ccircle cx='240' cy='240' r='188' fill='%23081735' stroke='%2372a4ff' stroke-opacity='.32'/%3E%3Ccircle cx='240' cy='240' r='142' stroke='%2372a4ff' stroke-opacity='.18' stroke-dasharray='5 12'/%3E%3Cpath d='M151 270h181c39 0 68-25 68-61 0-34-26-59-61-60-15-49-54-78-105-78-58 0-101 38-111 94-35 5-61 32-61 66 0 23 12 39 30 49' stroke='%2372a4ff' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M177 222l-25 22 25 22M303 222l25 22-25 22M263 201l-46 86' stroke='%23f7f9fc' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M240 310v56M182 366h116' stroke='%2372a4ff' stroke-width='2' stroke-opacity='.65'/%3E%3Ccircle cx='182' cy='366' r='6' fill='%2372a4ff'/%3E%3Ccircle cx='240' cy='366' r='6' fill='%2372a4ff'/%3E%3Ccircle cx='298' cy='366' r='6' fill='%2372a4ff'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: none;
+}
+.relative:has(> img[src="/big-mark-logo.png"]) > img { display: none; }
+div[aria-hidden]:has(img[src="/big-mark-logo.png"]) > .absolute { display: none; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .001ms !important; } }
